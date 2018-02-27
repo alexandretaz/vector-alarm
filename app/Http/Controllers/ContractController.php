@@ -11,8 +11,8 @@ class ContractController extends Controller
 
     public function index()
     {
-        $params = $this->getFilters();
-        $this->getRepository()->applyFilters()->get();
+
+
     }
 
     public function add()
