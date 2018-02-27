@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clients extends Model
 {
-    //
+    public function contract()
+    {
+        $this->belongsTo('App\Contract');
+    }
+
 }
