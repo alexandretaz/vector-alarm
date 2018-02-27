@@ -9,7 +9,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use
+
 
 class ContractRepository
 {
