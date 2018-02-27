@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contracts', 'ContractController@index')->name('contracts');
 Route::get('/users', 'UserController@index')->name('users');
+Route::get('/contract/add', 'ContractController@add')->name('contract.add');
+
+Route::post('/contract/add', 'ContractController@store')->name('contract.store');
