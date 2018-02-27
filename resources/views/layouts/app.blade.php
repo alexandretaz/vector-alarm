@@ -36,9 +36,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li> <a href="{{route('register')}}">Cadastrar Usuário</a></li>
-                        <li><a href="#">Cadastrar Contrato</a></li>
-                        <li><a href="#">Central de Gerenciamento</a></li>
+                        <li> <a href="{{route('users')}}">Usuários</a></li>
+                        <li><a href="{{route('contracts')}}">Contratos</a></li>
+                        <li><a href="{{route('alarm')}}">Central de Gerenciamento</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
