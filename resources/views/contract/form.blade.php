@@ -9,11 +9,14 @@
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('contract.store') }}">
                             {{ csrf_field() }}
+                            @if(!empty($contract->id))
+                                <input type="hidden" name="id" value="{{$contract->id}}">
+                            @endif
                             <div class="form-group{{ $errors->has('client_cnpj') ? ' has-error' : '' }}">
                                 <label for="cnpjField" class="col-md-4 control-label">CNPJ</label>
 
                                 <div class="col-md-6">
-                                    <input id="cnpjField" type="text" class="form-control" name="client_cnpj" required>
+                                    <input id="cnpjField" type="text" class="form-control" name="client_cnpj" value="{{$contract->client_cnpj}}"required>
 
                                     @if ($errors->has('client_cnpj'))
                                         <span class="help-block">
@@ -27,7 +30,7 @@
                                 <label for="name" class="col-md-4 control-label">Razão Social</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="client_name" value="{{ old('client_name') }}" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="client_name" value="{{$contract->client_name}}" required autofocus>
 
                                     @if ($errors->has('client_name'))
                                         <span class="help-block">
@@ -41,7 +44,7 @@
                                 <label for="email" class="col-md-4 control-label">Nome Fantasia</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control" name="client_alias" value="{{ old('client_alias') }}" required>
+                                    <input id="email" type="text" class="form-control" name="client_alias" value="{{$contract->client_alias}}" required>
 
                                     @if ($errors->has('client_alias'))
                                         <span class="help-block">
@@ -55,7 +58,7 @@
                                 <label for="profile.cellnumber" class="col-md-4 control-label">Número de Vips:</label>
 
                                 <div class="col-md-6">
-                                    <input id="profileCellnumber" type="text" class="form-control" name="number_of_connections" required>
+                                    <input id="profileCellnumber" type="text" class="form-control" name="number_of_connections" value="{{$contract->number_of_connections}}" required>
 
                                     @if ($errors->has('number_of_connections'))
                                         <span class="help-block">

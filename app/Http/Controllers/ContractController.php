@@ -25,21 +25,36 @@ class ContractController extends Controller
         return view('contract.form', ['contract'=> $contract]);
     }
 
+    public function edit($contractId)
+    {
+        $contract = Contract::findOrFail($contractId);
+        return view ('contract.form', ['contract'=>$contract]);
+    }
+
     public function store(Request $request)
     {
         $requestId = $request->input('id', null);
+        $data = $request->toArray();
+        unset($data['_token']);
         if(empty($requestId)) {
-            $data = $request->toArray();
-            unset($data['_token']);
-            $result = Contract::create($data);
-            return redirect()->route('contracts');
-        }
+            Contract::create($data);
 
+        }
+        else{
+            $contract = Contract::findOrFail($requestId);
+            $contract->client_name = $data['client_name'];
+            $contract->client_alias = $data['client_alias'];
+            $contract->number_of_connections = $data['number_of_connections'];
+            $contract->save();
+        }
+        return redirect()->route('contracts');
     }
 
-    public function delete()
+    public function delete($contractId)
     {
-
+        $contract = Contract::findOrFail($contractId);
+        $contract->delete();
+        return redirect()->route('contracts');
     }
 
     private function getFilters()

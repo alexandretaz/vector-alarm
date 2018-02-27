@@ -30,8 +30,8 @@
                                     <td>{{ Carbon\Carbon::parse($contract->created_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>{{Carbon\Carbon::parse($contract->updated_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>
-                                        <a href="#">Editar</a>
-                                        <a href="#">Apagar</a>
+                                        <a href="/contract/{{$contract->id}}/edit">Editar</a>
+                                        <a href="/contract/{{$contract->id}}/delete">Apagar</a>
                                     </td>
 
                                 </tr>

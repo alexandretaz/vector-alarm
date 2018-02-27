@@ -18,8 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/contracts', 'ContractController@index')->name('contracts');
-Route::get('/users', 'UserController@index')->name('users');
-Route::get('/contract/add', 'ContractController@add')->name('contract.add');
+Route::get('/contracts', 'ContractController@index')->name('contracts')->middleware('auth');
+Route::get('/users', 'UserController@index')->name('users')->middleware('auth');
+Route::get('/contract/add', 'ContractController@add')->name('contract.add')->middleware('auth');
+Route::get('/contract/{contractId}/edit', 'ContractController@edit')->name('contract.edit')->middleware('auth');
+Route::get('/contract/{contractId}/delete', 'ContractController@delete')->name('contract.delete')->middleware('auth');
+
 
 Route::post('/contract/add', 'ContractController@store')->name('contract.store');
