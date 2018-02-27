@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <label for="contract-select" class="col-md-4 control-label">Contrato</label>
                             <div class="col-md-6">
-                                <select id="contract-select" class="form-control">
+                                <select id="contract-select" class="form-control" name="contract_id">
                                     <option value="0">Grupo Vector</option>
                                     @foreach(App\Contract::all() as $contract)
 
