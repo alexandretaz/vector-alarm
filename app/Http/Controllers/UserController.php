@@ -43,6 +43,7 @@ class UserController extends Controller
         unset($data['profile']);
         unset($data['_token']);
         unset($data['password_confirmation']);
+        $data['password'] = bcrypt($data['password']);
         $profile = new \StdClass();
         foreach($data as $att=>$value) {
             $user->$att = $value;
