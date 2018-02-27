@@ -7,14 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
-                    @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
-                        <h1>1</h1>
-                        @elseif(\Illuminate\Support\Facades\Auth::user()->isContractAdmin())
-                        <h2>2</h2>
-                        @elseif(\Illuminate\Support\Facades\Auth::user()->isParentUser())
-                        <h3>3</h3>
-                    @endif
+                <div class="panel-body" style="min-height: 700px">
+                    {!! Mapper::render() !!}
                 </div>
             </div>
         </div>

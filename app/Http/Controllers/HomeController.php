@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class HomeController extends Controller
 {
+
+
+    public function index()
+    {
+        Mapper::map(53.381128999999990000, -1.470085000000040000);
+
+        return view('home');
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -16,13 +26,4 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
 }
