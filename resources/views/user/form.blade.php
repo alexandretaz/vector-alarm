@@ -14,10 +14,10 @@
                             <label for="profile.full_name" class="col-md-4 control-label">Full Name</label>
 
                             <div class="col-md-6">
-                                <input id="profileFullName" type="text" class="form-control" name="profile[full_name]" required>
+                                <input id="profileFullName" type="text" class="form-control" name="profile[full_name]" value="{{$user->profile->full_name}}" required>
 
                                 @if ($errors->has('profile.full_name'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('profile.full_name') }}</strong>
                                     </span>
                                 @endif
@@ -28,10 +28,10 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
@@ -42,10 +42,10 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
@@ -59,7 +59,7 @@
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
@@ -77,8 +77,10 @@
                             <label for="contract-select" class="col-md-4 control-label">Contrato</label>
                             <div class="col-md-6">
                                 <select id="contract-select" class="form-control">
+                                    <option value="0">Grupo Vector</option>
                                     @foreach(App\Contract::all() as $contract)
-                                    <option value="{{$contract->id}}">{{$contract->client_alias}}</option>
+
+                                    <option value="{{$contract->id}}" @if($contract->id === $user->contract_id) selected="selected" @endif>{{$contract->client_alias}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -88,10 +90,10 @@
                             <label for="profile.photo" class="col-md-4 control-label">Photo:</label>
 
                             <div class="col-md-6">
-                                <input id="profilePhoto" type="file" class="form-control" name="profile[photo]">
+                                <input id="profilePhoto" type="file" class="form-control" name="profile[photo]" value="{{$user->profile->photo}}">
 
                                 @if ($errors->has('profile.photo'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('profile.photo') }}</strong>
                                     </span>
                                 @endif
@@ -102,10 +104,10 @@
                             <label for="profile.cellnumber" class="col-md-4 control-label">Cellphone:</label>
 
                             <div class="col-md-6">
-                                <input id="profileCellnumber" type="text" class="form-control" name="profile[cellnumber]" required>
+                                <input id="profileCellnumber" type="text" class="form-control" name="profile[cellnumber]" value="{{$user->profile->cellnumber}}" required>
 
                                 @if ($errors->has('profile.cellnumber'))
-                                    <span class="help-block">
+                                <span class="help-block">
                                         <strong>{{ $errors->first('profile.cellnumber') }}</strong>
                                     </span>
                                 @endif

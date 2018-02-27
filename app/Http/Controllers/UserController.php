@@ -13,4 +13,10 @@ class UserController extends Controller
 
         return view('user.list', ['users'=>$users]);
     }
+
+    public function edit($userId)
+    {
+        $user = User::
+    }
+
 }
