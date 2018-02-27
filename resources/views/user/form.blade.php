@@ -8,13 +8,16 @@
                 <div class="panel-heading">Cadastro de Usuário</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('user.store') }}">
                         {{ csrf_field() }}
+                        @if(!empty($user->id))
+                            <input type="hidden" name="id" value="{{$user->id}}">
+                            @endif
                         <div class="form-group{{ $errors->has('profile.full_name') ? ' has-error' : '' }}">
                             <label for="profile.full_name" class="col-md-4 control-label">Full Name</label>
 
                             <div class="col-md-6">
-                                <input id="profileFullName" type="text" class="form-control" name="profile[full_name]" value="{{$user->profile->full_name}}" required>
+                                <input id="profileFullName" type="text" class="form-control" name="profile[full_name]" @if(isset($user->profile->full_name)) value="{{$user->profile->full_name}}" @endif required>
 
                                 @if ($errors->has('profile.full_name'))
                                 <span class="help-block">
@@ -90,7 +93,7 @@
                             <label for="profile.photo" class="col-md-4 control-label">Photo:</label>
 
                             <div class="col-md-6">
-                                <input id="profilePhoto" type="file" class="form-control" name="profile[photo]" value="{{$user->profile->photo}}">
+                                <input id="profilePhoto" type="file" class="form-control" name="profile[photo]" @if(isset($user->profile->photo)) value="{{$user->profile->photo}}" @endif>
 
                                 @if ($errors->has('profile.photo'))
                                 <span class="help-block">
@@ -104,7 +107,7 @@
                             <label for="profile.cellnumber" class="col-md-4 control-label">Cellphone:</label>
 
                             <div class="col-md-6">
-                                <input id="profileCellnumber" type="text" class="form-control" name="profile[cellnumber]" value="{{$user->profile->cellnumber}}" required>
+                                <input id="profileCellnumber" type="text" class="form-control" name="profile[cellnumber]" @if(isset($user->profile->cellnumber)) value="{{$user->profile->cellnumber}}" @endif required>
 
                                 @if ($errors->has('profile.cellnumber'))
                                 <span class="help-block">

@@ -8,7 +8,7 @@
                     <div class="panel-heading">Usuários</div>
                     <div class="panel-body">
                     <div class="col-md-2 col-md-offset-8">
-                        <a href="{{route('register')}}" class="btn btn-success">Adicionar Usuário</a>
+                        <a href="{{route('user.add')}}" class="btn btn-success">Adicionar Usuário</a>
                     </div>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
@@ -30,8 +30,8 @@
                                 <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y H:i:s')}}</td>
                                 <td>{{Carbon\Carbon::parse($user->updated_at)->format('d/m/Y H:i:s')}}</td>
                                 <td>
-                                    <a href="#">Editar</a>
-                                    <a href="#">Apagar</a>
+                                    <a href="/user/{{$user->id}}/edit">Editar</a>
+                                    <a href="/user/{{$user->id}}/delete">Apagar</a>
                                 </td>
 
                             </tr>
