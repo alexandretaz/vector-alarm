@@ -26,7 +26,10 @@ Route::get('/contract/{contractId}/delete', 'ContractController@delete')->name('
 Route::get('/user/{userId}/edit', 'UserController@edit')->name('user.edit')->middleware('auth');
 Route::get('user/add', 'UserController@add')->name('user.add')->middleware('auth');
 Route::get('/user/{userId}/delete', 'UserController@delete')->name('user.delete')->middleware('auth');
+Route::get('/contract/{contractId}/clients', 'ClientController@index')->name('client.list')->middleware('auth');
+Route::get('/contract/{contractId}/client/add', 'ClientController@add')->name('client.add')->middleware('auth');
 
 
 Route::post('/contract/add', 'ContractController@store')->name('contract.store');
 Route::post('/user/store', 'UserController@store')->name('user.store');
+Route::post('/client/store', 'ClientController@store')->name('client.store');

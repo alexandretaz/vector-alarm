@@ -17,6 +17,7 @@
                             <tr>
                                 <th>Nome do Cliente</th>
                                 <th>CNPJ</th>
+                                <th>Clientes Cadastrados</th>
                                 <th>Criado em</th>
                                 <th>Última alteração</th>
                                 <th>Ações</th>
@@ -27,11 +28,14 @@
                                 <tr>
                                     <td>{{$contract->client_name}}</td>
                                     <td>{{$contract->client_cnpj}}</td>
+                                    <td>{{count($contract->root_clients)}}</td>
                                     <td>{{ Carbon\Carbon::parse($contract->created_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>{{Carbon\Carbon::parse($contract->updated_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>
-                                        <a href="/contract/{{$contract->id}}/edit">Editar</a>
-                                        <a href="/contract/{{$contract->id}}/delete">Apagar</a>
+                                        <a href="/contract/{{$contract->id}}/edit">Editar</a><br>
+                                        <a href="/contract/{{$contract->id}}/delete">Apagar</a><br>
+                                        <a href="/contract/{{$contract->id}}/clients">Visualizar Clientes</a>
+
                                     </td>
 
                                 </tr>
