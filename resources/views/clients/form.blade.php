@@ -13,6 +13,7 @@
                             @if(!empty($client->id))
                                 <input type="hidden" name="id" value="{{$client->id}}">
                             @endif
+                            <input type="hidden" name="dependents" value="0">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="clientName" class="col-md-4 control-label">Nome do Cliente</label>
 
@@ -40,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
-                                <label for="cpf" class="col-md-4 control-label">RG</label>
+                                <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                                 <div class="col-md-6">
                                     <input id="cpf" type="text" class="form-control" name="name" value="{{$client->cpf}}"required>
@@ -135,10 +136,10 @@
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('procedimentos_especiais') ? ' has-error' : '' }}">
-                                <label for="procedimentos_especiais" class="col-md-4 control-label">Contra Senha</label>
+                                <label for="procedimentos_especiais" class="col-md-4 control-label">Procedimentos Especiais</label>
 
                                 <div class="col-md-6">
-                                    <input id="procedimentos_especiais" type="text" class="form-control" name="procedimentos_especiais" value="{{$client->procedimentos_especiais}}">
+                                    <textarea id="procedimentos_especiais" class="form-control" name="procedimentos_especiais" >{{$client->procedimentos_especiais}}</textarea>
 
                                     @if ($errors->has('procedimentos_especiais'))
                                         <span class="help-block">

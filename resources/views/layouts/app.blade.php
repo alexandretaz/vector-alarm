@@ -20,7 +20,7 @@
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -32,10 +32,9 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" >
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" id="app-navbar-collapse">
                         <li> <a href="{{route('users')}}">Usuários</a></li>
                         <li><a href="{{route('contracts')}}">Contratos</a></li>
                         <li><a href="{{route('home')}}">Central de Gerenciamento</a></li>
