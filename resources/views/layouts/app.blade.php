@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'VIP Card') }}</title>
 
     <!-- Styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -73,6 +74,9 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src ="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

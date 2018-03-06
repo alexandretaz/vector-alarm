@@ -13,6 +13,7 @@
                             @if(!empty($client->id))
                                 <input type="hidden" name="id" value="{{$client->id}}">
                             @endif
+                            <input type="hidden" name="contract_id" value="{{$contract->id}}">
                             <input type="hidden" name="dependents" value="0">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="clientName" class="col-md-4 control-label">Nome do Cliente</label>
@@ -31,7 +32,7 @@
                                 <label for="rg" class="col-md-4 control-label">RG</label>
 
                                 <div class="col-md-6">
-                                    <input id="rg" type="text" class="form-control" name="name" value="{{$client->rg}}"required>
+                                    <input id="rg" type="text" class="form-control" name="rg" value="{{$client->rg}}"required>
 
                                     @if ($errors->has('rg'))
                                         <span class="help-block">
@@ -44,7 +45,7 @@
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                                 <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control" name="name" value="{{$client->cpf}}"required>
+                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{$client->cpf}}"required>
 
                                     @if ($errors->has('cpf'))
                                         <span class="help-block">
@@ -57,7 +58,7 @@
                                 <label for="tel_res" class="col-md-4 control-label">Telefone Residencial</label>
 
                                 <div class="col-md-6">
-                                    <input id="tel_res" type="text" class="form-control" name="name" value="{{$client->tel_res}}">
+                                    <input id="tel_res" type="text" class="form-control" name="tel_res" value="{{$client->tel_res}}">
 
                                     @if ($errors->has('tel_res'))
                                         <span class="help-block">
@@ -70,7 +71,7 @@
                                 <label for="tel_com" class="col-md-4 control-label">Telefone Comercial</label>
 
                                 <div class="col-md-6">
-                                    <input id="tel_com" type="text" class="form-control" name="name" value="{{$client->tel_com}}">
+                                    <input id="tel_com" type="text" class="form-control" name="tel_com" value="{{$client->tel_com}}">
 
                                     @if ($errors->has('tel_com'))
                                         <span class="help-block">
@@ -83,7 +84,7 @@
                                 <label for="tel_com" class="col-md-4 control-label">Telefone Celular</label>
 
                                 <div class="col-md-6">
-                                    <input id="tel_com" type="text" class="form-control" name="name" value="{{$client->tel_celular}}">
+                                    <input id="tel_com" type="text" class="form-control" name="tel_celular" value="{{$client->tel_celular}}">
 
                                     @if ($errors->has('tel_celular'))
                                         <span class="help-block">
@@ -148,6 +149,15 @@
                                     @endif
                                 </div>
                             </div>
+                            @if(empty($client->parent_client))
+                                <h3>Veículos</h3>
+                                @include('clients.veiculos_form',['client',$client])
+
+                                <h3>Contatos em ordem de prioridade em caso de incidentes</h3>
+                            @include('clients.contatos_prioridade',['client',$client])
+                                <h3>Contatos autorizados a fazer alteração no cadastro</h3>
+                                @include('clients.contatos_autorizados',['client',$client])
+                            @endif
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

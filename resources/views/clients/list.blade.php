@@ -27,7 +27,7 @@
                             @forelse($clients as $client)
                                 <tr>
                                     <td>{{$client->name}}</td>
-                                    <td>{{$client->depents_number}}</td>
+                                    <td>{{$client->dependents->count()}}</td>
                                     <td>{{ Carbon\Carbon::parse($client->created_at)->format('d/m/Y H:i:s')}}</td>
                                     <td>{{Carbon\Carbon::parse($client->updated_at)->format('d/m/Y H:i:s')}}</td>
                                     <td><a href="/client/{{$client->id}}/dependent/add" class="btn btn-success">Adicionar Dependente</a> </td>
