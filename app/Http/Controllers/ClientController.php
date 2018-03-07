@@ -24,6 +24,15 @@ class ClientController extends Controller
         return view('clients.form',['client'=>$client, 'contract'=>$contract]);
     }
 
+    public function show($clientId){
+        $client = Clients::findOrFail($clientId);
+        return view ('clients.show', ['client'=>$client]);
+    }
+
+    public function showDependents($parent_id) {
+
+    }
+
     public function addDependent($clientId)
     {
         $client = new Clients();
@@ -36,7 +45,9 @@ class ClientController extends Controller
 
     public function edit($clientId)
     {
-
+        $client = Clients::findOrFail($clientId);
+        $contract = Contract::findOrFail($client->contract_id);
+        return view('clients.form',['client'=>$client, 'contract'=>$contract]);
     }
 
     public function delete($clientId)

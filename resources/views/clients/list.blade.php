@@ -32,9 +32,9 @@
                                     <td>{{Carbon\Carbon::parse($client->updated_at)->format('d/m/Y H:i:s')}}</td>
                                     <td><a href="/client/{{$client->id}}/dependent/add" class="btn btn-success">Adicionar Dependente</a> </td>
                                     <td>
-                                        <a href="/contract/{{$client->id}}/edit">Editar</a>
-                                        <a href="/contract/{{$client->id}}/delete">Apagar</a>
-                                        <a href="/contract/{{$client->id}}/clients">Visualizar Dependentes</a>
+                                        <a href="/client/{{$client->id}}/edit">Editar</a>
+                                        <a href="/client/{{$client->id}}/delete">Apagar</a>
+                                        <a href="/client/{{$client->id}}">Visualizar</a>
                                     </td>
 
                                 </tr>

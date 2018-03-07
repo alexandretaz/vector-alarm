@@ -26,5 +26,25 @@ class Clients extends Model
         return Clients::select()->where('parent_client','=', $this->id)->get();
     }
 
+    public function getVeiculoAttribute()
+    {
+        if(isset($this->attributes['veiculo']) && !empty($this->attributes['veiculo']) ) {
+            return \json_decode($this->attributes['veiculo']);
+        }
+    }
+
+    public function getContatosPrioridadeAttribute()
+    {
+        if(isset($this->attributes['contatos_prioridade']) && !empty($this->attributes['contatos_prioridade']) ) {
+            return \json_decode($this->attributes['contatos_prioridade']);
+        }
+    }
+
+    public function getContatosAutorizadosAttribute()
+    {
+        if(isset($this->attributes['contatos_autorizados']) && !empty($this->attributes['contatos_autorizados']) ) {
+            return \json_decode($this->attributes['contatos_autorizados']);
+        }
+    }
 
 }
