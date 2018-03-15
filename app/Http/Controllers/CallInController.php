@@ -63,8 +63,9 @@ class CallInController extends Controller
 
     public function search()
     {
-        $calls = [];
-        return view('callin.list',['calls'=>$calls]);
+        
+         $clients = Clients::whereNull('parent_client')->orderBy('name')->get()
+         return view('callin.list_client',['clients'=>$clients, 'strSearch'=>'']);
     }
 
     public function list($status=null)
