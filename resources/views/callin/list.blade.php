@@ -13,6 +13,7 @@
 
                             </div>
                         </form>
+                        <p><a href="{{route('call.add')}}" class="btn btn-primary">Adicionar Chamado</a></p>
                         @if(isset($calls) && (!empty($calls['alarm'])||!empty($calls['help'])))
                             @if(!empty($calls['alarm']))
                             <div class="row">
