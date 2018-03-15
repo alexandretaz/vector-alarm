@@ -77,7 +77,7 @@
                                         <td>{{$prioritarios->tel_res}}</td>
                                         <td><a href="mailto:{{$prioritarios->email}}">{{$prioritarios->email}}</a></td>
                                     </tr>
-                                    @empty
+                            
                                     <tr>
                                         <td colspan="7">Nenhum contato cadastrado</td>
                                     </tr>
