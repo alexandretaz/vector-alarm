@@ -50,7 +50,7 @@ Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.cl
 
 
 Route::post('/contract/add', 'ContractController@store')->name('contract.store')->middleware('auth');
-Route::post('/chamado/add','CallInController@add')->name('call.add')->middleware('auth');
+Route::post('/chamado/add','CallInController@add')->name('call.post.add')->middleware('auth');
 Route::post('/chamado/create','CallInController@store')->name('call.store')->middleware('auth');
 Route::post('/chamado/add/search-client', 'CallInController@searchClient')->name('chamado.search.client')->middleware('auth');
 Route::post('/chamado/interact', 'CallInController@storeInteraction')->name('chamado.store.interact')->middleware('auth');
