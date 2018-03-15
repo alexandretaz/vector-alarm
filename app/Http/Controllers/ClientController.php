@@ -92,7 +92,7 @@ class ClientController extends Controller
             $client->save();
             $parentClient=$client->parent_client_executive;
             $dependents = $parentClient->dependents->count();
-            $client->position = ++$dependents;
+            $client->position = $dependents;
             $client->save();
 
         }
