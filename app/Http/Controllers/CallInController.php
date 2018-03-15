@@ -61,16 +61,9 @@ class CallInController extends Controller
 
     }
 
-    public function search(Request $request)
+    public function search()
     {
-        $id = $request->input('id');
-        $type = $request->input('type');
-        if($type == '2') {
-            $calls = Alarm::findOrFail($id);
-        }
-        else{
-            $calls = Help::findOrFail($id);
-        }
+        $calls = [];
         return view('callin.list',['calls'=>$calls]);
     }
 
