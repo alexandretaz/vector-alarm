@@ -21,7 +21,7 @@
                                     <td>{{$dependent->code}}</td>
                                     <td>{{$dependent->name}}</td>
                                     <td>{{$dependent->grau_parentesco}}</td>
-                                    <td><a href="/client/{{$dependent->id}}/edit">Editar</a><br><a href="/client/{{$dependent->id}}/delete">Apagar</a></td>
+                                    <td><a href="/client/{{$dependent->id}}/edit" class="btn btn-primary">Editar</a><br><a class="btn btn-danger" href="/client/{{$dependent->id}}/delete">Apagar</a></td>
                                 </tr>
                         @endforeach
                             </tbody>
