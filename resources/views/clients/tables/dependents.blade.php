@@ -21,7 +21,13 @@
                                     <td>{{$dependent->code}}</td>
                                     <td>{{$dependent->name}}</td>
                                     <td>{{$dependent->grau_parentesco}}</td>
-                                    <td><a href="/client/{{$dependent->id}}/edit" class="btn btn-primary">Editar</a><br><a class="btn btn-danger" href="/client/{{$dependent->id}}/delete">Apagar</a></td>
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"> <a href="/client/{{$dependent->id}}/edit" class="btn btn-primary">Editar</a></li>
+                                            <li class="list-group-item"><a class="btn btn-danger" href="/client/{{$dependent->id}}/delete">Apagar</a></li>
+                                        </ul>
+                                    </td>
+
                                 </tr>
                         @endforeach
                             </tbody>
