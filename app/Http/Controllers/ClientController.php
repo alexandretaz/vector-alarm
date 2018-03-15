@@ -20,7 +20,7 @@ class ClientController extends Controller
     public function search($contractId)
     {
         $strSearch = Input::get('serch');
-        $clients = Clients::select()->where('contract_id', '=', (int)$contractId)->whereNull('parent_client')->where('name', 'like', '%'.$strSearch.'%')->paginate();
+        $clients = Clients::where('contract_id', '=', (int)$contractId)->whereNull('parent_client')->where('name', 'like', '%'.$strSearch.'%')->paginate();
         $contract = Contract::findOrFail($contractId);
 
         return view('clients.list', ['clients' => $clients, 'contract' => $contract]);
