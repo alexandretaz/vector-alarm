@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CallInController extends Controller
 {
-    public function show($id, $type)
+    public function show($type, $id)
     {
         if($type == '2') {
             $call = Alarm::findOrFail($id);
