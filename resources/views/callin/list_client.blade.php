@@ -26,7 +26,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($clients as $client)
+                                @foreach($clients as $client)
                                     <tr>
                                         <td>{{$client->name}}</td>
                                         <td>{{$client->senha}}</td>
@@ -36,8 +36,7 @@
                                         </td>
 
                                     </tr>
-                                @empty
-                                @endforelse
+                                @endforeach
                                 </tbody>
                             </table>
                         @endif
