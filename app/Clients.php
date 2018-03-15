@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Clients extends Model
 {
@@ -19,6 +20,30 @@ class Clients extends Model
             return Clients::findOrFail($this->parent_client);
         }
         return null;
+    }
+
+    public function alarms()
+    {
+        return $this->hasMany('App\Alarm');
+    }
+
+    public function helps()
+    {
+        return $this->hasMany('App\Help');
+    }
+
+    public function getCodeAttribute()
+    {
+
+        if(empty($this->parent_client)) {
+            $idFormated = str_pad($this->id,4,"0",STR_PAD_LEFT);
+            $idFormated.='/00';
+        }
+        else{
+            $idFormated = str_pad($this->parent_client,4,"0",STR_PAD_LEFT);
+            $idFormated.='/'.str_pad($this->position,2,"0",STR_PAD_LEFT);
+        }
+        return $idFormated;
     }
 
     public function getDependentsAttribute()
@@ -45,6 +70,13 @@ class Clients extends Model
         if(isset($this->attributes['contatos_autorizados']) && !empty($this->attributes['contatos_autorizados']) ) {
             return \json_decode($this->attributes['contatos_autorizados']);
         }
+    }
+
+    public static function getByDevice($imei, $token)
+    {
+        $device = Device::select()->where('imei','=', $imei)->first();
+        $tokenRepo = DB::table('oauth_clients')->select()->where('secret','like', $token)->first();
+
     }
 
 }

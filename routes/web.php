@@ -24,7 +24,7 @@ Route::get('/contract/add', 'ContractController@add')->name('contract.add')->mid
 Route::get('/contract/{contractId}/edit', 'ContractController@edit')->name('contract.edit')->middleware('auth');
 Route::get('/contract/{contractId}/delete', 'ContractController@delete')->name('contract.delete')->middleware('auth');
 Route::get('/user/{userId}/edit', 'UserController@edit')->name('user.edit')->middleware('auth');
-Route::get('user/add', 'UserController@add')->name('user.add')->middleware('auth');
+Route::get('/user/add', 'UserController@add')->name('user.add')->middleware('auth');
 Route::get('/user/{userId}/delete', 'UserController@delete')->name('user.delete')->middleware('auth');
 Route::get('/contract/{contractId}/clients', 'ClientController@index')->name('client.list')->middleware('auth');
 Route::get('/contract/{contractId}/client/add', 'ClientController@add')->name('client.add')->middleware('auth');
@@ -32,8 +32,20 @@ Route::get('/client/{clientId}/edit', 'ClientController@edit')->name('client.edi
 Route::get('/client/{clientId}/delete', 'ClientController@delete')->name('client.delete')->middleware('auth');
 Route::get('/client/{clientId}/dependent/add','ClientController@addDependent')->name('client.dependent.add')->middleware('auth');
 Route::get('/client/{clientId}','ClientController@show')->name('client.show')->middleware('auth');
+Route::get('/client/{clientId}/car/add','CarController@add')->name('car.add')->middleware('auth');
+Route::get('/client/{clientId}/car/{carPosition}/edit','CarController@edit')->name('car.edit')->middleware('auth');
+Route::get('/client/{clientId}/car/{carPosition}/delete','CarController@delete')->name('car.delete')->middleware('auth');
+Route::get('/client/{clientId}/contato_autorizado/add','AuthContactController@add')->name('contato_autorizado.add')->middleware('auth');
+Route::get('/client/{clientId}/contato_autorizado/{position}/edit','AuthContactController@edit')->name('contato_autorizado.edit')->middleware('auth');
+Route::get('/client/{clientId}/contato_autorizado/{position}/delete','AuthContactController@delete')->name('contato_autorizado.delete')->middleware('auth');
+Route::get('/client/{clientId}/contato_prioridade/add','PriorityContactController@add')->name('contato_prioridade.add')->middleware('auth');
+Route::get('/client/{clientId}/contato_prioridade/{position}/edit','PriorityContactController@edit')->name('contato_prioridade.edit')->middleware('auth');
+Route::get('/client/{clientId}/contato_prioridade/{position}/delete','PriorityContactController@delete')->name('contato_prioridade.delete')->middleware('auth');
 
 
-Route::post('/contract/add', 'ContractController@store')->name('contract.store');
-Route::post('/user/store', 'UserController@store')->name('user.store');
-Route::post('/client/store', 'ClientController@store')->name('client.store');
+Route::post('/contract/add', 'ContractController@store')->name('contract.store')->middleware('auth');
+Route::post('/user/store', 'UserController@store')->name('user.store')->middleware('auth');
+Route::post('/client/store', 'ClientController@store')->name('client.store')->middleware('auth');
+Route::post('/client/car/store', 'CarController@store')->name('car.store')->middleware('auth');
+Route::post('/client/contato_autorizado/store', 'AuthContactController@store')->name('contato_autorizado.store')->middleware('auth');
+Route::post('/client/contato_prioridade/store', 'PriorityContactController@store')->name('contato_prioridade.store')->middleware('auth');

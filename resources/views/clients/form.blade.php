@@ -149,15 +149,6 @@
                                     @endif
                                 </div>
                             </div>
-                            @if(empty($client->parent_client))
-                                <h3>Veículos</h3>
-                                @include('clients.veiculos_form',['client',$client])
-
-                                <h3>Contatos em ordem de prioridade em caso de incidentes</h3>
-                            @include('clients.contatos_prioridade',['client',$client])
-                                <h3>Contatos autorizados a fazer alteração no cadastro</h3>
-                                @include('clients.contatos_autorizados',['client',$client])
-                            @endif
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

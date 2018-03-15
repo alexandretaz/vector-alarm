@@ -11,6 +11,14 @@
                             {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-4">
+                                <strong>Código</strong>
+                            </div>
+                            <div class="col-md-6">
+                                {{$client->code}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
                                 <strong>RG</strong>
                             </div>
                                 <div class="col-md-6">
@@ -83,6 +91,7 @@
                         </div>
                         <div class="row">
                                 @if(empty($client->parent_client))
+
                                     <h3>Veículos</h3>
                                     @include('clients.tables.veiculos',['client',$client])
 
