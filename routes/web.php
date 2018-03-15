@@ -44,7 +44,7 @@ Route::get('/client/{clientId}/contato_prioridade/{position}/edit','PriorityCont
 Route::get('/client/{clientId}/contato_prioridade/{position}/delete','PriorityContactController@delete')->name('contato_prioridade.delete')->middleware('auth');
 Route::get('/chamados/{status?}','CallInController@list')->name('call.list')->middleware('auth');
 Route::get('/chamado/show/{type}/{id}','CallInController@show')->name('call.show')->middleware('auth');
-Route::get('/chamado/add','CallInController@add')->name('call.add')->middleware('auth');
+Route::post('/chamado/add', 'CallInController@searchClient')->name('call.add')->middleware('auth');
 Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.client')->middleware('auth');
 
 
