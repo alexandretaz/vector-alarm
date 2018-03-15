@@ -72,7 +72,7 @@
                                         <td>{{$contato->tel_cel}}</td>
                                         <td>{{$contato->tel_com}}</td>
                                         <td>{{$contato->tel_res}}</td>
-                                        <td><a href="mailto:{{$prioritarios->email}}">{{$prioritarios->email}}</a></td>
+                                        <td><a href="mailto:{{$contato->email}}">{{$contato->email}}</a></td>
                                     </tr>
                                 @empty
                                     <tr>
