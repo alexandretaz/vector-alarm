@@ -33,9 +33,9 @@
                                         <td>{{$alarm->client->name}}</td>
                                         <td>{{$alarm->created_at}}</td>
                                         <td>{{$alarm->updated_at}}</td>
-                                        <td>@if(empty($alarm->closed_at))<span class="text-success text-uppercase"> Fechado</span> @else <span class="text-danger text-uppercase"> Fechado</span>@endif</td>
+                                        <td>@if(empty($alarm->closed_at))<span class="bg-danger text-danger text-uppercase"> Aberto</span> @else <span class="bg-sucess text-success text-uppercase"> Fechado</span>@endif</td>
                                         <td>
-                                            <a href="{{route('call.show',['id'=>$alarm->id, 'type'=>1])}}">Abrir Chamado</a>
+                                            <a href="{{route('call.show',['id'=>$alarm->id, 'type'=>2])}}">Abrir Chamado</a>
                                         </td>
 
                                     </tr>
