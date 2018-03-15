@@ -51,6 +51,7 @@
                         </div>
                     </div>
                     <div class="row">
+                    @if(isset($client->contatos_prioridade) && is_array($client->contatos_prioridade) && !empty($client->contatos_prioridade))
                         <div class="col-md-10">
                             <strong>Contatos Prioridade</strong>
                             <table class="table-striped">
@@ -66,7 +67,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($client->contatos_prioridade as $index=>$contato)
+                                @foreach($client->contatos_prioridade as $index=>$contato)
                                     <tr>
                                         <td>{{$index+1}}</td>
                                         <td>{{ucwords($prioritarios->nome)}}</td>
@@ -80,10 +81,11 @@
                                     <tr>
                                         <td colspan="7">Nenhum contato cadastrado</td>
                                     </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
