@@ -32,8 +32,8 @@ else
                         <td>{{$autorizados->tel_res}}</td>
                         <td>
                             <ul class="list-group">
-                                <li class="list-group-item"><a class="btn btn-info" href="{{route('contato_autorizado.edit',['clientId'=>$client->id, 'carPosition'=>$indexAutorizado])}}">Editar</a></li>
-                                <li class="list-group-item"><a class="btn btn-danger" href="{{route('contato_autorizado.delete',['clientId'=>$client->id, 'carPosition'=>$indexAutorizado])}}">Apagar</a></li>
+                                <li class="list-group-item"><a class="btn btn-info" href="{{route('contato_autorizado.edit',['clientId'=>$client->id, 'position'=>$indexAutorizado])}}">Editar</a></li>
+                                <li class="list-group-item"><a class="btn btn-danger" href="{{route('contato_autorizado.delete',['clientId'=>$client->id, 'position'=>$indexAutorizado])}}">Apagar</a></li>
                             </ul>
                         </td>
                     </tr>

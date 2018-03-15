@@ -16,11 +16,12 @@ $cp =[];
                 <th>Celular</th>
                 <th>Telefone Comercial</th>
                 <th>Telefone Residencial</th>
+                <th>Ações</th>
 
             </tr>
             </thead>
             <tbody>
-            @forelse($cp as $prioritarios)
+            @forelse($cp as $indexPrioritario=>$prioritarios)
                 @if(!empty($prioritarios->nome))
                     <tr>
                         <td>{{ucwords($prioritarios->nome)}}</td>
@@ -29,6 +30,12 @@ $cp =[];
                         <td>{{$prioritarios->tel_cel}}</td>
                         <td>{{$prioritarios->tel_com}}</td>
                         <td>{{$prioritarios->tel_res}}</td>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item"><a class="btn btn-info" href="{{route('contato_prioridade.edit',['clientId'=>$client->id, 'postion'=>$indexPrioritario])}}">Editar</a></li>
+                                <li class="list-group-item"><a class="btn btn-danger" href="{{route('contato_prioridade.delete',['clientId'=>$client->id, 'position'=>$indexPrioritario])}}">Apagar</a></li>
+                            </ul>
+                        </td>
                     </tr>
                 @endif
             @empty
