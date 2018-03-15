@@ -17,6 +17,7 @@
                         @if(isset($calls) && (!empty($calls['alarm'])||!empty($calls['help'])))
                             @if(!empty($calls['alarm']))
                             <div class="row">
+                            <h3>Alarmes de pânico</h3>
                             <table class="table table-responsive table-bordered">
                                 <thead>
                                 <tr>
@@ -46,6 +47,7 @@
                             @endif
                                 @if(!empty($calls['help']))
                                     <div class="row">
+                                    <h3>Pedidos de Ajuda</h3>
                                         <table class="table table-responsive table-bordered">
                                             <thead>
                                             <tr>
