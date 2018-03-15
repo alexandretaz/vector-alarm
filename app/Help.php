@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Help extends Model
 {
-    protected $fillable=['client_id','opened_at', 'closed_at', 'interaction','points'];
+    protected $fillable=['client_id','opened_at', 'closed_at', 'interactions','points'];
 
     public function client()
     {
@@ -14,11 +14,11 @@ class Help extends Model
     }
     public function getInteractionsAttribute()
     {
-        return \json_decode('interactions');
+        return \json_decode($this->attributes['interactions']);
     }
 
     public function getPointsAttribute()
     {
-        return \json_decode('attributes');
+        return \json_decode($this->attributes['points']);
     }
 }

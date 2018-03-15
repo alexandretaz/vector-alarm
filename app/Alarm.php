@@ -15,12 +15,12 @@ class Alarm extends Model
 
     public function getInteractionsAttribute()
     {
-        return \json_decode('interactions');
+        return \json_decode($this->attributes['interactions']);
     }
 
     public function getPointsAttribute()
     {
-        return \json_decode('attributes');
+        return \json_decode($this->attributes['points']);
     }
 
 

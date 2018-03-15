@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Clients extends Model
 {
     protected $fillable = ['name', 'dependents','parent_client', 'cpf', 'contract_id', 'rg', 'tel_com', 'tel_res', 'tel_cel'
-        , 'grau_parentesco',  'veiculo',  'contatos_prioridade',  'contatos_autorizados', 'senha', 'contra_senha', 'procedimentos_especiais'];
+        , 'grau_parentesco',  'veiculo',  'contatos_prioridade',  'contatos_autorizados', 'senha', 'contra_senha', 'procedimentos_especiais', 'code'];
     public function contract()
     {
         return $this->belongsTo('App\Contract');
@@ -34,10 +34,14 @@ class Clients extends Model
 
     public function getCodeAttribute()
     {
+        if(!empty($this->attributes['code'])) {
+            return $this->attributes['code'];
+        }
+
 
         if(empty($this->parent_client)) {
             $idFormated = str_pad($this->id,4,"0",STR_PAD_LEFT);
-            $idFormated.='/00';
+            $idFormated.='/01';
         }
         else{
             $idFormated = str_pad($this->parent_client,4,"0",STR_PAD_LEFT);

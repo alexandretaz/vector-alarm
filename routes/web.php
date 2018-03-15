@@ -27,6 +27,7 @@ Route::get('/user/{userId}/edit', 'UserController@edit')->name('user.edit')->mid
 Route::get('/user/add', 'UserController@add')->name('user.add')->middleware('auth');
 Route::get('/user/{userId}/delete', 'UserController@delete')->name('user.delete')->middleware('auth');
 Route::get('/contract/{contractId}/clients', 'ClientController@index')->name('client.list')->middleware('auth');
+Route::get('/contract/{contractId}/clients/search', 'ClientController@search')->name('client.search')->middleware('auth');
 Route::get('/contract/{contractId}/client/add', 'ClientController@add')->name('client.add')->middleware('auth');
 Route::get('/client/{clientId}/edit', 'ClientController@edit')->name('client.edit')->middleware('auth');
 Route::get('/client/{clientId}/delete', 'ClientController@delete')->name('client.delete')->middleware('auth');
@@ -41,9 +42,19 @@ Route::get('/client/{clientId}/contato_autorizado/{position}/delete','AuthContac
 Route::get('/client/{clientId}/contato_prioridade/add','PriorityContactController@add')->name('contato_prioridade.add')->middleware('auth');
 Route::get('/client/{clientId}/contato_prioridade/{position}/edit','PriorityContactController@edit')->name('contato_prioridade.edit')->middleware('auth');
 Route::get('/client/{clientId}/contato_prioridade/{position}/delete','PriorityContactController@delete')->name('contato_prioridade.delete')->middleware('auth');
+Route::get('/chamados/{status?}','CallInController@list')->name('call.list')->middleware('auth');
+Route::get('/chamado/show/{type}/{id}','CallInController@show')->name('call.show')->middleware('auth');
+Route::get('/chamado/add','CallInController@add')->name('call.add')->middleware('auth');
+Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.client')->middleware('auth');
+
 
 
 Route::post('/contract/add', 'ContractController@store')->name('contract.store')->middleware('auth');
+Route::post('/chamado/add','CallInController@add')->name('call.add')->middleware('auth');
+Route::post('/chamado/create','CallInController@store')->name('call.store')->middleware('auth');
+Route::post('/chamado/add/search-client', 'CallInController@searchClient')->name('chamado.search.client')->middleware('auth');
+Route::post('/chamado/interact', 'CallInController@storeInteraction')->name('chamado.store.interact')->middleware('auth');
+Route::post('/chamado/close', 'CallInController@close')->name('chamado.close')->middleware('auth');
 Route::post('/user/store', 'UserController@store')->name('user.store')->middleware('auth');
 Route::post('/client/store', 'ClientController@store')->name('client.store')->middleware('auth');
 Route::post('/client/car/store', 'CarController@store')->name('car.store')->middleware('auth');

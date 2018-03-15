@@ -5,12 +5,22 @@ namespace App\Http\Controllers;
 use App\Clients;
 use App\Contract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ClientController extends Controller
 {
     public function index($contractId)
     {
         $clients = Clients::select()->where('contract_id', '=', (int)$contractId)->whereNull('parent_client')->paginate();
+        $contract = Contract::findOrFail($contractId);
+
+        return view('clients.list', ['clients' => $clients, 'contract' => $contract]);
+    }
+
+    public function search($contractId)
+    {
+        $strSearch = Input::get('serch');
+        $clients = Clients::select()->where('contract_id', '=', (int)$contractId)->whereNull('parent_client')->where('name', 'like', '%'.$strSearch.'%')->paginate();
         $contract = Contract::findOrFail($contractId);
 
         return view('clients.list', ['clients' => $clients, 'contract' => $contract]);
@@ -52,7 +62,13 @@ class ClientController extends Controller
 
     public function delete($clientId)
     {
-
+        $client = Clients::findOrFail($clientId);
+        foreach($client->dependents as $dependent)
+        {
+            $dependent->delete();
+        }
+        $client->delete();
+        return redirect('/contract/'.$client->contract_id.'/clients');
     }
 
     public function store(Request $request)
@@ -77,6 +93,7 @@ class ClientController extends Controller
         $client->name = $data['name'];
         $client->contract_id = $data['contract_id'];
         $client->cpf = $data['cpf'];
+        $client->code = $data['code'];
         $client->rg = $data['rg'];
         $client->tel_res = $data['tel_res'];
         $client->tel_com = $data['tel_com'];
@@ -92,7 +109,7 @@ class ClientController extends Controller
             $client->save();
             $parentClient=$client->parent_client_executive;
             $dependents = $parentClient->dependents->count();
-            $client->position = $dependents;
+            $client->position = ++$dependents;
             $client->save();
 
         }

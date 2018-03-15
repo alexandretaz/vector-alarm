@@ -21,6 +21,19 @@
                                 <div class="col-md-6">
                                     <input id="clientName" type="text" class="form-control" name="name" value="{{$client->name}}"required>
 
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+                                <label for="clientCode" class="col-md-4 control-label">Código do Cliente</label>
+
+                                <div class="col-md-6">
+                                    <input id="clientCode" type="text" class="form-control" name="code" value="{{$client->code}}">
+
                                     @if ($errors->has('client_cnpj'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>

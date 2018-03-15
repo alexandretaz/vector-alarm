@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
+                <p><a href="{{route('call.list')}}">Chamados</a></p>
 
                 <div id="map" class="panel-body" style="min-height: 700px">
 
