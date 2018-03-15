@@ -20,7 +20,9 @@
                                 <strong>Contrato</strong>
                             </div>
                             <div class="col-md-6">
+                                @if(!empty($client->contract) && is_object($client->contract))
                                 {{$client->contract->client_alias}}({{$client->contract->client_name}})
+                                @endif
                             </div>
                         </div>
                         <div class="row">
