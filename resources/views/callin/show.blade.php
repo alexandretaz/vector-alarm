@@ -67,11 +67,11 @@
                                 @forelse($client->contatos_prioridade as $index=>$contato)
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{ucwords($prioritarios->nome)}}</td>
-                                        <td>{{$prioritarios->parentesco_grau}}</td>
-                                        <td>{{$prioritarios->tel_cel}}</td>
-                                        <td>{{$prioritarios->tel_com}}</td>
-                                        <td>{{$prioritarios->tel_res}}</td>
+                                        <td>{{ucwords($contato->nome)}}</td>
+                                        <td>{{$contato->parentesco_grau}}</td>
+                                        <td>{{$contato->tel_cel}}</td>
+                                        <td>{{$contato->tel_com}}</td>
+                                        <td>{{$contato->tel_res}}</td>
                                         <td><a href="mailto:{{$prioritarios->email}}">{{$prioritarios->email}}</a></td>
                                     </tr>
                                 @empty
