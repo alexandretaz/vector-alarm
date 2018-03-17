@@ -53,8 +53,8 @@
                     <div class="row">
                     @if(isset($client->contatos_prioridade) && is_array($client->contatos_prioridade) && !empty($client->contatos_prioridade))
                         <div class="col-md-10">
-                            <strong>Contatos Prioridade</strong>
-                            <table class="table-striped">
+                            <h4>Contatos Prioridade</h4>
+                            <table class="table-striped table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Prioridade</th>
@@ -77,14 +77,42 @@
                                         <td>{{$contato->tel_res}}</td>
                                         <td><a href="mailto:{{$contato->email}}">{{$contato->email}}</a></td>
                                     </tr>
-                            
-                                    <tr>
-                                        <td colspan="7">Nenhum contato cadastrado</td>
-                                    </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        @endif
+                    </div>
+                    <div class="row">
+                        @if(isset($client->veiculo) && is_array($client->veiculo) && !empty($client->veiculo))
+                            <div class="col-md-10">
+                                <h4>Veículos</h4>
+                                <table class="table-striped table table-bordered table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Placa</th>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>Ano</th>
+                                        <th>Cor</th>
+                                        <th>Grau</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($client->veiculo as $iVeiculo=>$veiculo)
+                                        <tr>
+                                            <td>{{ucwords($veiculo->placa)}}</td>
+                                            <td>{{$veiculo->marca}}</td>
+                                            <td>{{$veiculo->modelo}}</td>
+                                            <td>{{$veiculo->ano}}</td>
+                                            <td>{{$veiculo->cor}}</td>
+                                            <td>{{$veiculo->grau}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         @endif
                     </div>
                 </div>

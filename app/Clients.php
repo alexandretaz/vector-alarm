@@ -52,28 +52,39 @@ class Clients extends Model
 
     public function getDependentsAttribute()
     {
+
         return Clients::select()->where('parent_client','=', $this->id)->get();
     }
 
     public function getVeiculoAttribute()
     {
-        if(isset($this->attributes['veiculo']) && !empty($this->attributes['veiculo']) ) {
-            return \json_decode($this->attributes['veiculo']);
+        if(empty($this->attributes['parent_client'])) {
+            if (isset($this->attributes['veiculo']) && !empty($this->attributes['veiculo'])) {
+                return \json_decode($this->attributes['veiculo']);
+            }
         }
+        return $this->parent_client_executive->veiculo;
+
     }
 
     public function getContatosPrioridadeAttribute()
     {
-        if(isset($this->attributes['contatos_prioridade']) && !empty($this->attributes['contatos_prioridade']) ) {
-            return \json_decode($this->attributes['contatos_prioridade']);
+        if(empty($this->attributes['parent_client'])) {
+            if (isset($this->attributes['contatos_prioridade']) && !empty($this->attributes['contatos_prioridade'])) {
+                return \json_decode($this->attributes['contatos_prioridade']);
+            }
         }
+        return $this->parent_client_executive->contatos_prioridade;
     }
 
     public function getContatosAutorizadosAttribute()
     {
-        if(isset($this->attributes['contatos_autorizados']) && !empty($this->attributes['contatos_autorizados']) ) {
-            return \json_decode($this->attributes['contatos_autorizados']);
+        if(empty($this->attributes['parent_client'])) {
+            if (isset($this->attributes['contatos_autorizados']) && !empty($this->attributes['contatos_autorizados'])) {
+                return \json_decode($this->attributes['contatos_autorizados']);
+            }
         }
+        return $this->parent_client_executive->contatos_autorizados;
     }
 
     public static function getByDevice($imei, $token)
