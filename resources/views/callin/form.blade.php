@@ -49,12 +49,22 @@
                                 {{$client->tel_cel}}
                             </div>
                         </div>
+                        @if(!empty($client->parent_client))
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Vip Cadastrado</strong>
+                            </div>
+                            <div class="col-md-6">
+                                {{$client->parent_client_executive->name}}
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="row">
                     @if(isset($client->contatos_prioridade) && is_array($client->contatos_prioridade) && !empty($client->contatos_prioridade))
                         <div class="col-md-10">
                             <h4>Contatos Prioridade</h4>
-                            <table class="table-striped table table-bordered table-responsive">
+                            <table class="table-striped">
                                 <thead>
                                     <tr>
                                         <th>Prioridade</th>
