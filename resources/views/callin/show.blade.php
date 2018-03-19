@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(!empty($client->contatos_prioridade))
                     <div class="row">
                         <div class="col-md-10">
                             <strong>Contatos Prioridade</strong>
@@ -83,6 +84,7 @@
                             </table>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -121,6 +123,7 @@
             </div>
         </div>
         @endif
+        @if(!empty($call->interactions))
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -148,5 +151,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 @endsection
