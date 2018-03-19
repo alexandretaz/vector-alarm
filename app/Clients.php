@@ -63,6 +63,7 @@ class Clients extends Model
                 return \json_decode($this->attributes['veiculo']);
             }
         }
+        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
         return $this->parent_client_executive->veiculo;
 
     }
@@ -74,6 +75,7 @@ class Clients extends Model
                 return \json_decode($this->attributes['contatos_prioridade']);
             }
         }
+        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
         return $this->parent_client_executive->contatos_prioridade;
     }
 
@@ -84,6 +86,7 @@ class Clients extends Model
                 return \json_decode($this->attributes['contatos_autorizados']);
             }
         }
+        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
         return $this->parent_client_executive->contatos_autorizados;
     }
 
