@@ -7,7 +7,6 @@
             $contato_prioridadeLabel = $cp+1;
         }
         else{
-            $cp = 0;
             $contato_prioridade = new \stdClass();
             $contato_prioridade->nome = null;
             $contato_prioridade->parentesco_grau = null;
