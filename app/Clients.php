@@ -63,8 +63,10 @@ class Clients extends Model
                 return \json_decode($this->attributes['veiculo']);
             }
         }
-        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
-        return $this->parent_client_executive->veiculo;
+        if(isset($this->parent_client_executive) && is_object($this->parent_client_executive) && isset($this->parent_client_executive->veiculo)) {
+            return $this->parent_client_executive->veiculo;
+        }
+        return null;
 
     }
 
@@ -75,8 +77,10 @@ class Clients extends Model
                 return \json_decode($this->attributes['contatos_prioridade']);
             }
         }
-        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
+       if(isset($this->parent_client_executive) && is_object($this->parent_client_executive) && isset($this->parent_client_executive->contatos_prioridade)) {
         return $this->parent_client_executive->contatos_prioridade;
+       }
+        return null;
     }
 
     public function getContatosAutorizadosAttribute()
@@ -86,8 +90,10 @@ class Clients extends Model
                 return \json_decode($this->attributes['contatos_autorizados']);
             }
         }
-        $this->parent_client_executive = self::FindOrFail($this->attributes['parent_client']);
+       if(isset($this->parent_client_executive) && is_object($this->parent_client_executive) && isset($this->parent_client_executive->contatos_autorizados)) {
         return $this->parent_client_executive->contatos_autorizados;
+       }
+        return null
     }
 
     public static function getByDevice($imei, $token)
