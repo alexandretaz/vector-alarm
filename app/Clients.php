@@ -93,7 +93,7 @@ class Clients extends Model
        if(isset($this->parent_client_executive) && is_object($this->parent_client_executive) && isset($this->parent_client_executive->contatos_autorizados)) {
         return $this->parent_client_executive->contatos_autorizados;
        }
-        return null
+        return null;
     }
 
     public static function getByDevice($imei, $token)
