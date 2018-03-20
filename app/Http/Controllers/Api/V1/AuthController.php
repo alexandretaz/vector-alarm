@@ -17,10 +17,15 @@ class AuthController extends Controller
         }
         else{
             $client = Client::select()->where('cpf', $cpf)->get();
-            $client->addDevice($device);
-        }
 
-        return response(200)->json($client);
+        }
+        if(!empty($client))
+        {
+            $client->addDevice($device);
+            return response(200)->json($client);
+        }
+        return reponse(404)->json(false);
+
 
     }
 

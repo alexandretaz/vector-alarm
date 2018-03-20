@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        if(!empty($client->parent_client) && empty($this->id))
+    {
+        $executive = $client->parent_client_executive;
+        $dependents = count($executive->dependents);
+        $position = ($dependents+2);
+        $codePre = explode('/', $executive->code);
+        $code = $codePre['0'].'/'.str_pad($position,2,'0',STR_PAD_LEFT);
+    }
+    @endphp
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -32,7 +42,7 @@
                                 <label for="clientCode" class="col-md-4 control-label">Código do Cliente</label>
 
                                 <div class="col-md-6">
-                                    <input id="clientCode" type="text" class="form-control" name="code" value="{{$client->code}}">
+                                    <input id="clientCode" type="text" class="form-control" name="code" value="@if(!isset($code)){{$client->code}}@else{{$code}}@endif">
 
                                     @if ($errors->has('client_cnpj'))
                                         <span class="help-block">
@@ -45,7 +55,7 @@
                                 <label for="rg" class="col-md-4 control-label">RG</label>
 
                                 <div class="col-md-6">
-                                    <input id="rg" type="text" class="form-control" name="rg" value="{{$client->rg}}"required>
+                                    <input id="rg" type="text" class="form-control" name="rg" value="{{$client->rg}}" @if(empty($client->parent_client)) required @endif>
 
                                     @if ($errors->has('rg'))
                                         <span class="help-block">
@@ -58,7 +68,7 @@
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                                 <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{$client->cpf}}"required>
+                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{$client->cpf}}"@if(empty($client->parent_client)) required @endif>
 
                                     @if ($errors->has('cpf'))
                                         <span class="help-block">

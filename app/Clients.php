@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Clients extends Model
 {
     protected $fillable = ['name', 'dependents','parent_client', 'cpf', 'contract_id', 'rg', 'tel_com', 'tel_res', 'tel_cel'
-        , 'grau_parentesco',  'veiculo',  'contatos_prioridade',  'contatos_autorizados', 'senha', 'contra_senha', 'procedimentos_especiais', 'code'];
+        , 'grau_parentesco',  'veiculo',  'contatos_prioridade',  'contatos_autorizados', 'senha', 'contra_senha', 'position', 'procedimentos_especiais', 'code'];
     public function contract()
     {
         return $this->belongsTo('App\Contract');
@@ -70,6 +70,14 @@ class Clients extends Model
 
     }
 
+    public function addDevice($imei)
+    {
+        $newDevice = new Device();
+        $newDevice->imei = $imei;
+        $newDevice->owner_id = $this->id;
+        $newDevice->save();
+    }
+
     public function getContatosPrioridadeAttribute()
     {
         if(empty($this->attributes['parent_client'])) {
@@ -102,5 +110,25 @@ class Clients extends Model
         $tokenRepo = DB::table('oauth_clients')->select()->where('secret','like', $token)->first();
 
     }
+
+    public function getCpfAttribute()
+    {
+        if(empty($this->attributes['id'])) {
+            return;
+        }
+
+        if(empty($this->attributes['cpf']) ){
+            if(empty($this->attributes['parent_client'])) {
+                throw new \Exception('Usuário sem CPF e principal');
+            }
+            else{
+                $parent = Clients::findOrFail($this->attributes['parent_client']);
+                return $parent->cpf;
+            }
+            return null;
+        }
+        return $this->attributes['cpf'];
+    }
+
 
 }
