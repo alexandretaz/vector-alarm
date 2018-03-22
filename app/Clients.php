@@ -70,11 +70,16 @@ class Clients extends Model
 
     }
 
-    public function addDevice($imei)
+    public function addDevice($imei, $brand, $model, $token)
     {
+        $now = new \DateTime();
         $newDevice = new Device();
         $newDevice->imei = $imei;
+        $newDevice->brand = $brand;
+        $newDevice->model = $model;
+        $newDevice->token = $token;
         $newDevice->owner_id = $this->id;
+        $newDevice->first_login = $now->format('Y-m-d H:i:s');
         $newDevice->save();
     }
 
@@ -106,8 +111,8 @@ class Clients extends Model
 
     public static function getByDevice($imei, $token)
     {
-        $device = Device::select()->where('imei','=', $imei)->first();
-        $tokenRepo = DB::table('oauth_clients')->select()->where('secret','like', $token)->first();
+        $device = Device::select()->where('imei','=', $imei)->where('token','=', $token)->first();
+        return Clients::findOrFail($device->owner_id);
 
     }
 

@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api\V1;
 
 
 use App\Alarm;
+use App\Clients;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,9 @@ class AlarmController
 {
 
     public function start(Request $request) {
-        $user = User::getByDevice($request->input('device'), $request->input('token'));
+        $user = Clients::getByDevice($request->input('device'), $request->input('token'));
         if($user!==null) {
-            $alarm = Alarm::create($request);
+            $alarm = Alarm::createFromClient($user);
         }
         return response()->json($alarm);
     }
