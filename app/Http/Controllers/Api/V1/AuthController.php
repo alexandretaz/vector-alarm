@@ -12,13 +12,11 @@ class AuthController extends Controller
         $data = $request->toArray();
         $jsonStr = key($data);
         $json = \json_decode($jsonStr);
-        print_r($json);
-        die();
-        $cpf = $data["cpf"];
-        $code = $data["code"];
-        $deviceImei = $data['imei'];
-        $deviceBrand = $data['brand'];
-        $deviceModel = $data['model'];
+        $cpf = $data->cpf;
+        $code = $json->code;
+        $deviceImei = $json->imei;
+        $deviceBrand = $json->brand;
+        $deviceModel = $json->model;
         if(empty($cpf) || empty($code) || empty($deviceImei) ) {
              \header('Dados necessários ausentes',true,404);
              die('Xurupita');
