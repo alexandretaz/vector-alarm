@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Http\Controller\Api\V1'],function(){
+Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Api\V1'],function(){
     Route::get('/',function(){
         return response('Olá Mundo');
     });
