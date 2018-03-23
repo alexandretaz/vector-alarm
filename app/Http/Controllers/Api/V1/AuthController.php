@@ -11,8 +11,8 @@ class AuthController extends Controller
     {
         $data = $request->toArray();
         $jsonStr = key($data);
-
-        print_r($jsonStr);
+        $json = \json_decode($jsonStr);
+        print_r($json);
         die();
         $cpf = $data["cpf"];
         $code = $data["code"];
