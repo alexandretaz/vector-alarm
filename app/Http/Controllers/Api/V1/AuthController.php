@@ -21,7 +21,8 @@ class AuthController extends Controller
 
         }
         else{
-            $client = Client::select()->where('code', $code)->get();
+            $client = Client::select()->where('code', $code)->first();
+            var_dump($client->toArray());
             if($cpf == $client->cpf) {
                 $token = sha1($code.$cpf.$deviceImei);
                 $client->addDevice($deviceImei, $deviceBrand, $deviceModel, $token);
