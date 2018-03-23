@@ -9,9 +9,10 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Clients;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HelpController
+class HelpController extends Controller
 {
     public function start(Request $request) {
         $user = Clients::getByDevice($request->input('device'), $request->input('token'));

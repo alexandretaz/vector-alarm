@@ -13,8 +13,9 @@ use App\Alarm;
 use App\Clients;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AlarmController
+class AlarmController extends Controller
 {
 
     public function start(Request $request) {
