@@ -19,11 +19,17 @@ class AlarmController extends Controller
 {
 
     public function start(Request $request) {
+        $data = $request->toArray();
+        $jsonStr = key($data);
+        $json = \json_decode($jsonStr);
+        $imei = $json->imei;
+        $token = $json->token;
         $user = Clients::getByDevice($request->input('device'), $request->input('token'));
         if($user!==null) {
             $alarm = Alarm::createFromClient($user);
+            return response(\json_encode($alarm),200);
         }
-        return response()->json($alarm);
+        return response(\json_encode(false),500);
     }
 
     public function point(Request $request) {
