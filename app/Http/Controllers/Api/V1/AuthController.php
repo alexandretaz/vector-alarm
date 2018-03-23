@@ -15,7 +15,8 @@ class AuthController extends Controller
         $deviceImei = $request->input('imei');
         $deviceBrand = $request->input('brand');
         $deviceModel = $request->input('model');
-
+            var_dump($request);
+            die();
         if(empty($cpf) || empty($code) || empty($deviceImei) ) {
              \header('Dados necessários ausentes',true,404);
 
