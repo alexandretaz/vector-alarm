@@ -10,8 +10,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $data = $request->toArray();
-        $input = $data['0'];
-        $objInput = \json_decode($input);
+        $objInput = \json_decode($data);
+        var_dump($objInput);
         $cpf = $objInput->cpf;
         $code = $objInput->code;
         $deviceImei = $objInput->imei;
