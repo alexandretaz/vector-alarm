@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        var_dump($request->toArray());
+        var_dump($request);
         die();
         $cpf = $request->input('cpf');
         $code = $request->input('code');
