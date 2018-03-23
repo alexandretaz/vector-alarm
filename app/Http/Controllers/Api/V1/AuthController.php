@@ -34,7 +34,7 @@ class AuthController extends Controller
             }
 
         }
-        return response("", 404)->json(false);
+        return response(\json_encode(false), 404);
 
 
     }
