@@ -24,7 +24,7 @@ class AlarmController extends Controller
         $json = \json_decode($jsonStr);
         $imei = $json->imei;
         $token = $json->token;
-        $user = Clients::getByDevice($request->input('device'), $request->input('token'));
+        $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
             $alarm = Alarm::createFromClient($user);
             return response(\json_encode($alarm),200);
