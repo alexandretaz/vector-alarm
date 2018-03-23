@@ -20,6 +20,8 @@ class AlarmController extends Controller
 
     public function start(Request $request) {
         $data = $request->toArray();
+        var_dump($data);
+        die();
         $jsonStr = key($data);
         $json = \json_decode($jsonStr);
         $imei = $json->imei;
