@@ -9,8 +9,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        var_dump(\json_decode($request));
-        die();
+
         $cpf = $request->input('cpf');
         $code = $request->input('code');
         $deviceImei = $request->input('imei');
@@ -18,7 +17,8 @@ class AuthController extends Controller
         $deviceModel = $request->input('model');
 
         if(empty($cpf) || empty($code) || empty($deviceImei) ) {
-            return reponse(404)->json(false);
+             \header('Dados necessários ausentes',true,404);
+
         }
         else{
             $client = Client::select()->where('code', $code)->get();
