@@ -10,7 +10,9 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $data = $request->toArray();
-        print_r($data);
+        $jsonStr = key($data);
+
+        print_r($jsonStr);
         die();
         $cpf = $data["cpf"];
         $code = $data["code"];
