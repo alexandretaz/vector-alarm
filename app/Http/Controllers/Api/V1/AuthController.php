@@ -10,7 +10,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $data = $request->toArray();
-        return response(\json_encode($data),200)
+        return response(\json_encode($data),200);
         $cpf = $data['cpf'];
         $code = $data['code'];
         $deviceImei = $data['imei'];
