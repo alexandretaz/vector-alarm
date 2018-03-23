@@ -29,7 +29,7 @@ class AuthController extends Controller
                 $client->addDevice($deviceImei, $deviceBrand, $deviceModel, $token);
                 $tokenObj = new \stdClass();
                 $tokenObj->token = $token;
-                return response("",200)->json($tokenObj);
+                return response(\json_encode($tokenObj),200);
             }
 
         }
