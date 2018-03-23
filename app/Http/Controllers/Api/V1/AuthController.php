@@ -9,16 +9,17 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-
-        $cpf = $request->input('cpf');
-        $code = $request->input('code');
-        $deviceImei = $request->input('imei');
-        $deviceBrand = $request->input('brand');
-        $deviceModel = $request->input('model');
-            var_dump($request->toArray());
-            die();
+        $data = $request->toArray();
+        $input = $data['0'];
+        $objInput = \json_decode($input);
+        $cpf = $objInput->cpf;
+        $code = $objInput->code;
+        $deviceImei = $objInput->imei;
+        $deviceBrand = $objInput->brand;
+        $deviceModel = $objInput->model;
         if(empty($cpf) || empty($code) || empty($deviceImei) ) {
              \header('Dados necessários ausentes',true,404);
+             die('Xurupita');
 
         }
         else{
