@@ -12,8 +12,6 @@ class AuthController extends Controller
         $data = $request->toArray();
         $jsonStr = key($data);
         $json = \json_decode($jsonStr);
-        var_dump($json);
-        die();
         $cpf = $json->cpf;
         $code = $json->code;
         $deviceImei = $json->imei;
