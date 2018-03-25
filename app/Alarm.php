@@ -50,7 +50,14 @@ class Alarm extends Model
 
     public static function createFromClient($client)
     {
+        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
+        if(!$openAlarms->isEmpty()){
+            foreach($openAlarms as $openAlarm) {
+                $openAlarm->addInteraction("Fechado na criação de um novo alarm");
+                $openAlarm->closed_at= $now->format('Y-m-d H:i:s');
+            }
+        }
         $alarm = new Alarm();
         $alarm->client_id = $client->id;
         $alarm->opened_at = $now->format('Y-m-d H:i:s');
