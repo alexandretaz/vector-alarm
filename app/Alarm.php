@@ -56,6 +56,7 @@ class Alarm extends Model
             foreach($openAlarms as $openAlarm) {
                 $openAlarm->addInteraction("Fechado na criação de um novo alarm");
                 $openAlarm->closed_at= $now->format('Y-m-d H:i:s');
+                $openAlarm->save();
             }
         }
         $alarm = new Alarm();
