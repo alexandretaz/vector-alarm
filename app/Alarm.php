@@ -39,6 +39,10 @@ class Alarm extends Model
     {
         $actualDate = new \DateTime();
         $interactions = $this->getInteractionsAttribute();
+        if(empty($interactions))
+        {
+            $interactions = [];
+        }
         $interaction = new \stdClass();
         $interaction->title = $message;
         $interaction->type = $type;
