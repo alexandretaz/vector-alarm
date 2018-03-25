@@ -20,7 +20,10 @@ class AlarmController extends Controller
 
     public function start(Request $request) {
         $data = $request->toArray();
-        var_dump($data);
+        $jsonStr = key($data);
+        $jsonObject = \json_decode($jsonStr);
+        var_dump($jsonObject);
+        die();
         $imei = $data['imei'];
         $token = $data['token'];
         $user = Clients::getByDevice($imei, $token);
