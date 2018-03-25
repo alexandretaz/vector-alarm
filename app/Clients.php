@@ -111,7 +111,7 @@ class Clients extends Model
 
     public static function getByDevice($imei, $token)
     {
-        $device = Device::select()->where('imei','=', $imei)->where('token','=', $token)->first();
+        $device = Device::select()->where('imei','like', $imei)->where('token','like', $token)->first();
         return Clients::findOrFail($device->owner_id);
 
     }
