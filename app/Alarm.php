@@ -44,8 +44,10 @@ class Alarm extends Model
             $interactions = [];
         }
         else{
-            var_dump($interactions);
-            die();
+            if(is_object($interactions)){
+                $firstInteraction = clone $interactions;
+                $interactions = [];
+            }
         }
         $interaction = new \stdClass();
         $interaction->title = $message;
