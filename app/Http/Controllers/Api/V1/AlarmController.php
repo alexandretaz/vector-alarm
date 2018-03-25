@@ -40,7 +40,7 @@ class AlarmController extends Controller
     }
 
     public function assume(Request $request) {
-        $alarm = Alarm::findOrFail($request->input('alarm_id'));;
+        $alarm = Alarm::findOrFail($request->input('alarm_id'));
         return response()->json($alarm);
     }
 
