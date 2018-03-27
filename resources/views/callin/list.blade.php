@@ -84,7 +84,7 @@
         </div>
     </div>
     <script>
-        etTimeout(function(){
+        setTimeout(function(){
             window.location.reload(1);
         }, 10000);
     </script>
