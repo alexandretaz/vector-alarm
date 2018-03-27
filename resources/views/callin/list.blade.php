@@ -83,4 +83,9 @@
             </div>
         </div>
     </div>
+    <script>
+        etTimeout(function(){
+            window.location.reload(1);
+        }, 10000);
+    </script>
 @endsection
