@@ -80,7 +80,7 @@ class Alarm extends Model
             $objPoints = new \stdClass();
             $objPoints->latitude = $latitude;
             $objPoints->longitude = $longitude;
-            $points[] = $objPoints;
+            $points[] = \json_encode($objPoints);
         }
         $alarm = new Alarm();
         $alarm->client_id = $client->id;
