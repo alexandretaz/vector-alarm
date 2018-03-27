@@ -30,6 +30,7 @@ class AlarmController extends Controller
         $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
             $alarm = Alarm::createFromClient($user);
+            $alarm->points;
             if($latitude!=0 && $longitude!=0) {
                 $alarm->addPoint($latitude, $longitude);
             }
