@@ -22,7 +22,6 @@ class AlarmController extends Controller
         $data = $request->toArray();
         $jsonStr = key($data);
         $jsonObject = \json_decode($jsonStr);
-
         $imei = $jsonObject->imei;
         $token = $jsonObject->token;
         $latitude = (float)$jsonObject->latitude;
