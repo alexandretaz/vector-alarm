@@ -166,8 +166,8 @@
         @php
             if(!empty($call->points)){
             $firstPoint = current($call->points);
-                $firstLatitude = $fristPoint->latitude;
-                $firstLongitude = $fristPoint->longitude;
+                $firstLatitude = $firstPoint->latitude;
+                $firstLongitude = $firstPoint->longitude;
             }
 
 
