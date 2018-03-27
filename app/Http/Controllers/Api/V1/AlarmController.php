@@ -29,7 +29,14 @@ class AlarmController extends Controller
         $longitude = round($jsonObject->longitude,9);
         $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
-            $alarm = Alarm::createFromClient($user);
+            if(empty($latitude) || empty($longitude)) {
+                $alarm = Alarm::createFromClient($user);
+            }
+            else{
+                $alarm = Alarm::createFromClient($user, $latitude, $longitude);
+
+            }
+
             $alarm->points;
             if($latitude!=0 && $longitude!=0) {
                 $alarm->addPoint($latitude, $longitude);
