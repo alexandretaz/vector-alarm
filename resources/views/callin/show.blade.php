@@ -164,11 +164,17 @@
     </div>
     <script>
         @php
-            if(!empty($call->points)){
-            $firstPoint = current($call->points);
-                $firstLatitude = $firstPoint->latitude;
-                $firstLongitude = $firstPoint->longitude;
-            }
+            dd($call->points);
+                if(!empty($call->points)){
+                $firstPoint = current($call->points);
+
+                    $firstLatitude = $firstPoint->latitude;
+                    $firstLongitude = $firstPoint->longitude;
+                }
+                else{
+                    $firstLatitude= -23.7299983333;
+                    $firstLongitude=-46.27998833333333;
+                }
 
 
         @endphp
