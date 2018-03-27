@@ -165,7 +165,6 @@
     </div>
     <script>
         @php
-            dd($call->points);
                 if(!empty($call->points)){
                 $firstPoint = current($call->points);
 
