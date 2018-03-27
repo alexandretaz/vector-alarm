@@ -66,6 +66,7 @@ class Alarm extends Model
 
     public static function createFromClient($client, $latitude=null, $longitude=null)
     {
+        var_dump($latitude);die();
         $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
@@ -78,7 +79,7 @@ class Alarm extends Model
         $points=[];
         if( !empty($latitude) &&!empty($longitude) ) {
             $objPoints = new \stdClass();
-            var_dump($latitude);die();
+
             $objPoints->latitude = $latitude;
             $objPoints->longitude = $longitude;
             $points[] = $objPoints;
