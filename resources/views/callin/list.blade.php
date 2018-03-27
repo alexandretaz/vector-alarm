@@ -86,6 +86,6 @@
     <script>
         setTimeout(function(){
             window.location.reload(1);
-        }, 10000);
+        }, 5000);
     </script>
 @endsection
