@@ -92,6 +92,11 @@ class Alarm extends Model
         return $alarm;
     }
 
+    public static function getByDeviceToken($token, $imei)
+    {
+
+    }
+
 
 
 

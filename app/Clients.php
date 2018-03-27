@@ -27,6 +27,11 @@ class Clients extends Model
         return $this->hasMany('App\Alarm');
     }
 
+    public function openAlarms()
+    {
+        return Alarm::query()->select()->where('client_id','=',$this->id)->whereNull('closed_at')->first();
+    }
+
     public function helps()
     {
         return $this->hasMany('App\Help');

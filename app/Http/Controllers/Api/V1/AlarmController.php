@@ -47,8 +47,18 @@ class AlarmController extends Controller
     }
 
     public function point(Request $request) {
-        $alarm = Alarm::findOrFail($request->input('alarm_id'));
-        $alarm->addPoint($request->input('latitude'), $request->input('longitude'));
+        $data = $request->toArray();
+        $jsonStr = key($data);
+        $jsonObject = \json_decode($jsonStr);
+
+        $imei = $jsonObject->imei;
+        $token = $jsonObject->token;
+        $latitude = (float)$jsonObject->latitude;
+        $longitude = (float)$jsonObject->longitude;
+        $user = Clients::getByDevice($imei, $token);
+        $user->openAlarms();
+        var_dump($user->openAlarms()->toArray());
+        die();
         return response()->json($alarm);
     }
 
