@@ -78,6 +78,7 @@ class Alarm extends Model
         $points=[];
         if( !empty($latitude) &&!empty($longitude) ) {
             $objPoints = new \stdClass();
+            var_dump($latitude);die();
             $objPoints->latitude = $latitude;
             $objPoints->longitude = $longitude;
             $points[] = $objPoints;
