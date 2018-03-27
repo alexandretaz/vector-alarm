@@ -68,7 +68,7 @@ class CallInController extends Controller
          return view('callin.list_client',['clients'=>$clients, 'strSearch'=>'']);
     }
 
-    public function list($status=null)
+    public function list($status=1)
     {
 
         $queryAlarm = Alarm::select();
@@ -81,6 +81,7 @@ class CallInController extends Controller
             $queryAlarm->whereNotNull('closed_at');
             $queryHelp->whereNotNull('closed_at');
         }
+        $queryAlarm->orderBy('closed_at');
         $collectionHelp = $queryHelp->get();
         $collectionAlarm = $queryAlarm->get();
         $calls = ['alarm'=>$collectionAlarm, 'help'=>$collectionHelp];
