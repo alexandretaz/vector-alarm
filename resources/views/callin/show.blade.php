@@ -123,7 +123,7 @@
             </div>
         </div>
         @endif
-        @if(!empty($call->interactions))
+        {{--@if(!empty($call->interactions))
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -152,6 +152,7 @@
             </div>
         </div>
         @endif
+        --}}
     </div>
     <div class="container">
         <div class="row">
