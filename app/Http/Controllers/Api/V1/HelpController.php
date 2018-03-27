@@ -19,7 +19,7 @@ class HelpController extends Controller
         if($user!==null) {
             $help = Help::createFomClient($user);
         }
-        return response()->json($help);
+        return \response()->json($help);
     }
 
     public function point(Request $request) {

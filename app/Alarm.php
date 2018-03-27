@@ -26,6 +26,9 @@ class Alarm extends Model
     public function addPoint($lat, $long)
     {
         $points = $this->getPointsAttribute();
+        if(!is_array($points)) {
+            $points = [];
+        }
         $point = new \stdClass();
         $point->lat = $lat;
         $point->long = $long;
@@ -46,7 +49,9 @@ class Alarm extends Model
         else{
             if(is_object($interactions)){
                 $firstInteraction = clone $interactions;
+                unset($interactions);
                 $interactions = [];
+                $interactions[] = $firstInteraction;
             }
         }
         $interaction = new \stdClass();

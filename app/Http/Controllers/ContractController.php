@@ -14,7 +14,6 @@ class ContractController extends Controller
     {
 
         $contracts = Contract::select()->paginate();
-
         return view('contract.list', ['contracts'=>$contracts]);
 
     }
