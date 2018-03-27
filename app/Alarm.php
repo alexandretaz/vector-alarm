@@ -20,7 +20,8 @@ class Alarm extends Model
 
     public function getPointsAttribute()
     {
-        dd($this->attributes);
+        var_dump($this->attributes);
+        die();
         return \json_decode($this->attributes['points']);
     }
 
