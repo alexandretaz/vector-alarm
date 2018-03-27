@@ -22,10 +22,13 @@ class AlarmController extends Controller
         $data = $request->toArray();
         $jsonStr = key($data);
         $jsonObject = \json_decode($jsonStr);
+        var_dump($jsonObject);
         $imei = $jsonObject->imei;
         $token = $jsonObject->token;
         $latitude = (float)$jsonObject->latitude;
         $longitude = (float)$jsonObject->longitude;
+        var_dump($latitude);
+        die();
         $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
             if(empty($latitude) || empty($longitude)) {
