@@ -25,8 +25,8 @@ class AlarmController extends Controller
 
         $imei = $jsonObject->imei;
         $token = $jsonObject->token;
-        $latitude = round($jsonObject->latitude,9);
-        $longitude = round($jsonObject->longitude,9);
+        $latitude = (float)$jsonObject->latitude;
+        $longitude = (float)$jsonObject->longitude;
         $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
             if(empty($latitude) || empty($longitude)) {
