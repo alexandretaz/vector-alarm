@@ -66,7 +66,6 @@ class Alarm extends Model
 
     public static function createFromClient($client, $latitude=null, $longitude=null)
     {
-        var_dump($latitude);die();
         $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
