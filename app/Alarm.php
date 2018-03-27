@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alarm extends Model
 {
-    protected $fillable=['client_id','opened_at', 'closed_at', 'interactions','points'];
+    protected $fillable =['client_id','opened_at', 'closed_at', 'interactions','points'];
 
     public function client()
     {
@@ -20,8 +20,7 @@ class Alarm extends Model
 
     public function getPointsAttribute()
     {
-        var_dump($this->getAttributes());
-        die();
+
         return \json_decode($this->attributes['points']);
     }
 
@@ -65,7 +64,7 @@ class Alarm extends Model
         $this->save();
     }
 
-    public static function createFromClient($client)
+    public static function createFromClient($client, $latitude=null, $longitude=null)
     {
         $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
@@ -76,10 +75,18 @@ class Alarm extends Model
                 $openAlarm->save();
             }
         }
+        $points=[];
+        if( !empty($latitude) &&!empty($longitude) ) {
+            $objPoints = new \stdClass();
+            $objPoints->latitude = $latitude;
+            $objPoints->longitude = $longitude;
+            $points[] = $objPoints;
+        }
         $alarm = new Alarm();
         $alarm->client_id = $client->id;
         $alarm->opened_at = $now->format('Y-m-d H:i:s');
         $alarm->description="Alarme aberto pelo aplicativo";
+        $alarm->points = $points;
         $alarm->save();
         return $alarm;
     }
