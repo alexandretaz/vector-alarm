@@ -179,7 +179,7 @@
 
         @endphp
         var map;
-        var center = {lat:  {{$firstLatitude}}, lng:  {{$firstLongitude}};
+        var center = {lat:  {{$firstLatitude}}, lng:  {{$firstLongitude}} };
         function initMap() {
 
             map = new google.maps.Map(document.getElementById('map'), {
