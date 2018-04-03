@@ -188,7 +188,6 @@
                         $pointJson->lng = $point->long;
                         $objPoints[]= clone $pointJson;
                     }
-                    dd($objPoints);
                     $labelPointsArr = range(1, count($objPoints));
                     $strRange="";
                     foreach($labelPointsArr as $labelPoint) {
