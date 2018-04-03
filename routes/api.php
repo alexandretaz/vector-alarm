@@ -22,7 +22,7 @@ Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Api\V1'],functio
         return response('Olá Mundo');
     });
     //Route::post('/alarm/point', 'AlarmController@point')->name('api.ping.alarm');
-    ROute::post("/alarm/point", function(){
+    Route::post("/alarm/point", function(){
        return response()->json("{answer:test}",200);
     });
     Route::post('/auth','AuthController@login')->name('api.auth');
