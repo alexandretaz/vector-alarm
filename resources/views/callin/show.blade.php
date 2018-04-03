@@ -199,6 +199,7 @@
                 zoom: 16,
                 center:latLng
             });
+            putPoints();
         }
 
 
@@ -226,10 +227,11 @@
                 map: map
             });
         }
-
-        var points = @php echo \json_encode($call->points)@endphp;
-        for(i=0;i<points.length;i++){
-            addMarker(points[i], map);
+        function putPoints() {
+            var points = @php echo \json_encode($call->points)@endphp;
+            for (i = 0; i < points.length; i++) {
+                addMarker(points[i], map);
+            }
         }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
