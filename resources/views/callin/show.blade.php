@@ -235,6 +235,9 @@
         }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
+        etTimeout(function(){
+            window.location.reload(1);
+        }, 60000);
 
     </script>
 @endsection
