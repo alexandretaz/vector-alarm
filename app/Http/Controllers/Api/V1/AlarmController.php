@@ -50,7 +50,7 @@ class AlarmController extends Controller
         $data = $request->toArray();
         file_put_contents("/home/taz/vector-alarm/storage/logs/Api.log", serialize($data),FILE_APPEND);
         $jsonStr = key($data);
-        return response(\json_encode($jsonStr),500);
+        return response($jsonStr,200);
         $jsonObject = \json_decode($jsonStr);
 
         $imei = $jsonObject->imei;
