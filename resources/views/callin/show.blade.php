@@ -180,8 +180,8 @@
                 $objPoints = [];
                     foreach($call->points as $point){
                         $pointJson = new \stdClass();
-                        $pointJson->lat = $point->latitude;
-                        $pointJson->lng = $point->longitude;
+                        $pointJson->lat = $point->lat;
+                        $pointJson->lng = $point->long;
                         $objPoints[]=$pointJson;
                     }
                     $labelPointsArr = range(1, count($objPoints));
