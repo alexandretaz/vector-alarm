@@ -200,6 +200,7 @@
 
         @endphp
         var map;
+        var labelIndex = 0;
         var center = {lat:  {!! $firstLatitude !!}, lng:  {!! $firstLongitude!!} };
         function initMap() {
 
@@ -217,13 +218,12 @@
 
             var marker = new google.maps.Marker({
                 position: location,
-                label: labels[labelIndex++ % labels.length],
+                label: ++labelIndex,
                 map: map
             });
         }
 
-        var labels = {{$strRange}}
-        var labelIndex = 0;
+
         @foreach($objPoints as $objPoint)
         addMarker({!! json_encode($objPoint)!!}, map);
         @endforeach
