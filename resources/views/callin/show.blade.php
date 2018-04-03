@@ -224,7 +224,7 @@
             marker.push(innerMarker);
         }
 
-        var points = {!! json_encode($call->points) !!}
+        var points = {{\json_encode($call->points)}}
         for(i=0;i<points.length;i++){
             addMarker(points[i], map);
         }
