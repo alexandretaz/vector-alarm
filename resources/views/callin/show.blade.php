@@ -163,61 +163,57 @@
             </div>
         </div>
     </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ"></script>
     <script>
         @php
-                if(!empty($call->points)){
-                $firstPoint = current($call->points);
+            if(!empty($call->points)){
+            $firstPoint = current($call->points);
 
-                    $firstLatitude = (float)$firstPoint->latitude;
-                    $firstLongitude = (float)$firstPoint->longitude;
-                }
-                else{
-                    $firstLatitude= -23.7299983333;
-                    $firstLongitude=-46.27998833333333;
-                }
+                $firstLatitude = (float)$firstPoint->lat;
+                $firstLongitude = (float)$firstPoint->long;
+            }
+            else{
+                $firstLatitude= -23.7299983333;
+                $firstLongitude=-46.27998833333333;
+            }
 
-                if(count($call->points)>=2){
+            if(count($call->points)>=2){
 
-                $objPoints = [];
-                    foreach($call->points as $point){
-                        if(!isset($point->lat) || !isset($point->long)){
-                            continue;
-                        }
-                        $pointJson = new \stdClass();
-                        $pointJson->lat = (float)$point->lat;
-                        $pointJson->lng = (float)$point->long;
-                        $objPoints[]= clone $pointJson;
+            $objPoints = [];
+                foreach($call->points as $point){
+                    if(!isset($point->lat) || !isset($point->long)){
+                        continue;
                     }
-                    $labelPointsArr = range(1, count($objPoints));
-                    $strRange="";
-                    foreach($labelPointsArr as $labelPoint) {
-                    $strRange.=(string)"$labelPoint";
-                    }
-
+                    $pointJson = new \stdClass();
+                    $pointJson->lat = (float)$point->lat;
+                    $pointJson->lng = (float)$point->long;
+                    $objPoints[]= clone $pointJson;
                 }
+                $labelPointsArr = range(1, count($objPoints));
+                $strRange="";
+                foreach($labelPointsArr as $labelPoint) {
+                $strRange.=(string)"$labelPoint";
+                }
+
+            }
 
 
 
         @endphp
-        var map;
-        var labelIndex = 0;
-        var center = {lat:  {!! $firstLatitude !!}, lng:  {!! $firstLongitude!!} };
-        function initMap() {
+        function initialize() {
+            var center = { lat: {!! $firstLatitude !!}, lng: {!! $firstLongitude !!}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: center
+            });
 
-           var  map = new google.maps.Map(document.getElementById('map'), {
-                center: center,
-                zoom: 10
-            });
-            mainMarker = new google.maps.Marker({
-                position: center,
-                map:map
-            });
+
+            // Add a marker at the center of the map.
+            addMarker(center, map);
         }
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ&callback=initMap"
-            async defer></script>
-    <script>
+
         @if(isset($objPoints) && !empty($objPoints))
         function addMarker(location, map) {
 
@@ -233,5 +229,7 @@
         addMarker({!! json_encode($objPoint)!!}, map);
         @endforeach
         @endif
+        google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
 @endsection
