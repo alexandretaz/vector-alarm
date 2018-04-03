@@ -212,13 +212,17 @@
 
             if(location.latitude&&location.longitude) {
                 var latLng = new google.maps.LatLng(parseFloat(location.latitude), parseFloat(location.longitude))
+                console.log(parseFloat(location.latitude));
+                console.log(parseFloat(location.longitude));
             }
             else{
                 var latLng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.long))
+                console.log(parseFloat(location.lat));
+                console.log(parseFloat(location.long));
             }
-            console.log(latLng);
+
             var marker = new google.maps.Marker({
-                position: latLng,
+                position: {},
                 label: ""+label,
                 map: map
             });
