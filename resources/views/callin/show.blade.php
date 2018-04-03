@@ -168,8 +168,8 @@
                 if(!empty($call->points)){
                 $firstPoint = current($call->points);
 
-                    $firstLatitude = $firstPoint->latitude;
-                    $firstLongitude = $firstPoint->longitude;
+                    $firstLatitude = (float)$firstPoint->latitude;
+                    $firstLongitude = (float)$firstPoint->longitude;
                 }
                 else{
                     $firstLatitude= -23.7299983333;
@@ -184,8 +184,8 @@
                             continue;
                         }
                         $pointJson = new \stdClass();
-                        $pointJson->lat = $point->lat;
-                        $pointJson->lng = $point->long;
+                        $pointJson->lat = (float)$point->lat;
+                        $pointJson->lng = (float)$point->long;
                         $objPoints[]= clone $pointJson;
                     }
                     $labelPointsArr = range(1, count($objPoints));
@@ -200,10 +200,10 @@
 
         @endphp
         var map;
-        var center = {lat:  {{$firstLatitude}}, lng:  {{$firstLongitude}} };
+        var center = {lat:  {!! $firstLatitude !!}, lng:  {!! $firstLongitude!!} };
         function initMap() {
 
-            map = new google.maps.Map(document.getElementById('map'), {
+           var  map = new google.maps.Map(document.getElementById('map'), {
                 center: center,
                 zoom: 10
             });
