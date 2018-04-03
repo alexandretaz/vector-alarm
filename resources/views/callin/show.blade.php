@@ -189,10 +189,12 @@
 
         @endphp
         var labelIndex = 0;
-
-          var map = new google.maps.Map(document.getElementById('map'), {
+        var map = null;
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 16
             });
+        }
 
 
             // Add a marker at the center of the map.
