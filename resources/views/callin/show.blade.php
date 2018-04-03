@@ -221,7 +221,7 @@
             var marker = new google.maps.Marker({
                 position: location,
                 label: ""+label,
-                map: map
+                setMap: map
             });
         }
 
