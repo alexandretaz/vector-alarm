@@ -190,7 +190,7 @@
         @endphp
         var labelIndex = 0;
         function initialize() {
-            var center = { lat: {!! $firstLatitude !!}, long: {!! $firstLongitude !!}};
+            var center = { latitude: {!! $firstLatitude !!}, longitude: {!! $firstLongitude !!}};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
                 center: center
@@ -204,11 +204,9 @@
 
         @if(isset($call->points) && !empty($call->points))
         function addMarker(location, map) {
-            point.lat = location.lat;
-            point.lng = location.long;
             var label = ++labelIndex;
             var marker = new google.maps.Marker({
-                position: point,
+                position: {lat:location.latitude,lng:location.longitude},
                 label: ""+label,
                 map: map
             });
