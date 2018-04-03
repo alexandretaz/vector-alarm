@@ -23,7 +23,7 @@ Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Api\V1'],functio
     });
     //Route::post('/alarm/point', 'AlarmController@point')->name('api.ping.alarm');
     Route::post("/alarm/point", function(Request $request){
-       return response()->json("{answer:test}",200);
+       return response("{answer:test}",200);
     });
     Route::get("/alarm/point", function(){
         return response("Erro",200);
