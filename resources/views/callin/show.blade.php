@@ -199,7 +199,9 @@
 
 
         @if(isset($call->points) && !empty($call->points))
+        var marker = [];
         function addMarker(location, map) {
+
             var label = ++labelIndex;
             if(location.latitude&&location.longitude) {
                 var latLng = new google.maps.LatLng(location.latitude, location.longitude)
@@ -207,7 +209,7 @@
             else{
                 var latLng = new google.maps.LatLng(location.lat, location.long)
             }
-            var marker[] = new google.maps.Marker({
+            marker[] = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
                 map: map
