@@ -191,7 +191,7 @@
         var labelIndex = 0;
 
           var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16,
+                zoom: 16
             });
 
 
@@ -201,7 +201,12 @@
         @if(isset($call->points) && !empty($call->points))
         function addMarker(location, map) {
             var label = ++labelIndex;
-            var latLng = new google.maps.LatLng(location.latitude,location.longitude)
+            if(location.latitude&&location.longitude) {
+                var latLng = new google.maps.LatLng(location.latitude, location.longitude)
+            }
+            else{
+                var latLng = new google.maps.LatLng(location.lat, location.long)
+            }
             var marker[] = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
