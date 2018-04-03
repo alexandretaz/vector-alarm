@@ -50,6 +50,7 @@ class AlarmController extends Controller
         $data = $request->toArray();
         file_put_contents("/home/taz/vector-alarm/storage/logs/Api.log", serialize($data),FILE_APPEND);
         $jsonStr = key($data);
+        return response(\json_encode($jsonStr),500);
         $jsonObject = \json_decode($jsonStr);
 
         $imei = $jsonObject->imei;
@@ -60,7 +61,7 @@ class AlarmController extends Controller
         $user->openAlarms();
         var_dump($user->openAlarms()->toArray());
         die();
-        return response()->json($alarm);
+        return response(\json_encode($alarm),200);
     }
 
     public function assume(Request $request) {
