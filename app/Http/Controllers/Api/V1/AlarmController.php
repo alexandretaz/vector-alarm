@@ -50,13 +50,12 @@ class AlarmController extends Controller
         $data = $request->toArray();
         file_put_contents("/home/taz/vector-alarm/storage/logs/Api.log", serialize($data),FILE_APPEND);
         $jsonStr = key($data);
-        return response($jsonStr,200);
         $jsonObject = \json_decode($jsonStr);
 
         $imei = $jsonObject->imei;
         $token = $jsonObject->token;
-        $latitude = (float)$jsonObject->latitude;
-        $longitude = (float)$jsonObject->longitude;
+        $latitude = str_replace("_",".",$jsonObject->latitude);
+        $longitude = str_replace("_",".",$jsonObject->longitude);
         $user = Clients::getByDevice($imei, $token);
         $user->openAlarms();
         var_dump($user->openAlarms()->toArray());
