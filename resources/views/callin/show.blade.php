@@ -176,6 +176,22 @@
                     $firstLongitude=-46.27998833333333;
                 }
 
+                if(count($call->points)>=2){
+                $objPoints = [];
+                    foreach($call->points as $point){
+                        $pointJson = new \stdClass();
+                        $pointJson->lat = $point->latitude;
+                        $pointJson->lng = $point->longitude;
+                        $objPoints[]=$pointJson;
+                    }
+                    $labelPointsArr = range(1, count($objPoints));
+                    $strRange="";
+                    foreach($labelPointsArr as $labelPoint) {
+                    $strRange.=(string)$labelPoint;
+                    }
+                }
+
+
 
         @endphp
         var map;
@@ -191,7 +207,7 @@
                 map:map
             });
         }
-
+        @if(isset($objPoints) && !empty($objPoints))
         function addMarker(location, map) {
 
             var marker = new google.maps.Marker({
@@ -200,14 +216,16 @@
                 map: map
             });
         }
-            @if(count($call->points)>=2)
-            var labels = {{range(1,count($call->points))}}
+
+        var labels = {{$strRange}}
         var labelIndex = 0;
-                    @foreach($call->point as $point)
-            var point = {lat:{{$point->latitude}}, lng: {{$point->longitue}}}
-                    addMarker(point,map);
-                        @endforeach
-                @endif
+        @foreach($objPoints as $objPoint)
+        point = {{json_encode($objPoint)}}
+        addMarker(point, map);
+        @endforeach
+        @endif
+
+
 
 
     </script>
