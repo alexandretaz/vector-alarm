@@ -169,13 +169,13 @@
         @php
             if(!empty($call->points)){
             $firstPoint = current($call->points);
-                if(isset($firstPoint->lat) && isset($firstPoint->long)) {
+                if(!isset($firstPoint->lat) && !isset($firstPoint->long)) {
                 $firstLatitude = (float)$firstPoint->latitude;
                 $firstLongitude = (float)$firstPoint->longitude;
                 }
                 else{
-                $firstLatitude= -23.7299983333;
-                $firstLongitude=-46.27998833333333;
+                $firstLatitude= $firstPoint->lat;
+                $firstLongitude=$firstPoint->long;
                 }
             }
             else{
@@ -190,9 +190,14 @@
         @endphp
         var labelIndex = 0;
         var map = null;
+        var latitude = {{$firstLatitude}}
+        var longitude = {{$firstLongitude}}
         function initialize() {
+            var latLng = new google.maps.LatLng(latitude, longitude)
+
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16
+                zoom: 16,
+                center:latLng
             });
         }
 
