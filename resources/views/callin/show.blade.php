@@ -191,10 +191,25 @@
                 map:map
             });
         }
-        function testeMarkers()
-        {
 
+        function addMarker(location, map) {
+
+            var marker = new google.maps.Marker({
+                position: location,
+                label: labels[labelIndex++ % labels.length],
+                map: map
+            });
         }
+            @if(count($call->points)>=2)
+            var labels = {{range(1,count($call->points))}}
+        var labelIndex = 0;
+                    @foreach($call->point as $point)
+            var point = {lat:{{$point->latitude}}, lng: {{$point->longitue}}}
+                    addMarker(point,map);
+                        @endforeach
+                @endif
+
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ&callback=initMap"
             async defer></script>
