@@ -185,18 +185,7 @@
 
             if(count($call->points)>=2){
 
-            $objPoints = [];
-                foreach($call->points as $point){
-                    if(!isset($point->lat) || !isset($point->long)){
-                        continue;
-                    }
-                    $pointJson = new \stdClass();
-                    $pointJson->lat = (float)$point->lat;
-                    $pointJson->lng = (float)$point->long;
-                    $objPoints[]= clone $pointJson;
-                }
 
-            }
 
 
 
@@ -225,10 +214,10 @@
             });
         }
 
-
-        @foreach($objPoints as $objPoint)
-        addMarker({!! json_encode($objPoint)!!}, map);
-        @endforeach
+        var points = {!! json_encode($call->points) !!}
+        for(i=0;i<points.length;i++){
+            addMarker(points[i], map);
+        }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
 
