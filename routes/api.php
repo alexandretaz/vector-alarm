@@ -21,7 +21,7 @@ Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Api\V1'],functio
     Route::get('/',function(){
         return response('Olá Mundo');
     });
-    Route::post('/alarm/point', 'AlarmController@point')->name('api.ping.alarm');
+    Route::post('/add/alarm/point', 'AlarmController@point')->name('api.ping.alarm');
     Route::post('/auth','AuthController@login')->name('api.auth');
     Route::post('/alarm', 'AlarmController@start')->name('api.start.alarm');
     Route::post('/help/interact','HelpController@start')->name('api.help.interact');
