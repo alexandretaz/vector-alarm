@@ -169,9 +169,14 @@
         @php
             if(!empty($call->points)){
             $firstPoint = current($call->points);
-
+                if(isset($firstPoint->lat) && isset($firstPoint->long)) {
                 $firstLatitude = (float)$firstPoint->lat;
                 $firstLongitude = (float)$firstPoint->long;
+                }
+                else{
+                $firstLatitude= -23.7299983333;
+                $firstLongitude=-46.27998833333333;
+                }
             }
             else{
                 $firstLatitude= -23.7299983333;
