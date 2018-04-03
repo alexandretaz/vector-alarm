@@ -217,10 +217,10 @@
 
         @if(isset($objPoints) && !empty($objPoints))
         function addMarker(location, map) {
-
+            var label = ++labelIndex;
             var marker = new google.maps.Marker({
                 position: location,
-                label: ++labelIndex,
+                label: ""+label,
                 map: map
             });
         }
