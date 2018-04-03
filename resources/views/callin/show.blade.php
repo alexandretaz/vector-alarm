@@ -211,18 +211,17 @@
             var label = ++labelIndex;
 
             if(location.latitude&&location.longitude) {
-                var latLng = new google.maps.LatLng(parseFloat(location.latitude), parseFloat(location.longitude))
-                console.log(parseFloat(location.latitude));
-                console.log(parseFloat(location.longitude));
+
+                var latitude = parseFloat(location.latitude);
+                var longitude = parseFloat(location.longitude);
             }
             else{
-                var latLng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.long))
-                console.log(parseFloat(location.lat));
-                console.log(parseFloat(location.long));
+                var latitude = parseFloat(location.lat);
+                var longitude = parseFloat(location.long);
             }
 
             var marker = new google.maps.Marker({
-                position: {},
+                position: {lat:latitude, lng:longitude},
                 label: ""+label,
                 map: map
             });
