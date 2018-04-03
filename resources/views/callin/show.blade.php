@@ -177,7 +177,7 @@
                 }
 
                 if(count($call->points)>=2){
-                dd($call->points);
+
                 $objPoints = [];
                     foreach($call->points as $point){
                         $pointJson = new \stdClass();
@@ -190,6 +190,7 @@
                     foreach($labelPointsArr as $labelPoint) {
                     $strRange.=(string)$labelPoint;
                     }
+                    dd($objPoints);
                 }
 
 
