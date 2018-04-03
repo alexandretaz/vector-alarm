@@ -14,6 +14,7 @@ use App\Clients;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AlarmController extends Controller
 {
@@ -48,6 +49,7 @@ class AlarmController extends Controller
     public function point(Request $request) {
         $data = $request->toArray();
         var_dump(key($data));
+        Storage::append('LogApi.log', "{$data}");
         die();
         $jsonStr = key($data);
         $jsonObject = \json_decode($jsonStr);
