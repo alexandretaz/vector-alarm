@@ -225,7 +225,7 @@
         var labels = {{$strRange}}
         var labelIndex = 0;
         @foreach($objPoints as $objPoint)
-        point = {{json_encode($objPoint)}}
+        point = {!! json_encode($objPoint)!!}
         addMarker(point, map);
         @endforeach
         @endif
