@@ -47,7 +47,7 @@ class AlarmController extends Controller
 
     public function point(Request $request) {
         $data = $request->toArray();
-        var_dump($data);
+        var_dump(key($data));
         die();
         $jsonStr = key($data);
         $jsonObject = \json_decode($jsonStr);
