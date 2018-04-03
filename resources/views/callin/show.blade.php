@@ -180,6 +180,9 @@
 
                 $objPoints = [];
                     foreach($call->points as $point){
+                        if(!isset($point->lat) || !isset($point->long)){
+                            continue;
+                        }
                         $pointJson = new \stdClass();
                         $pointJson->lat = $point->lat;
                         $pointJson->lng = $point->long;
