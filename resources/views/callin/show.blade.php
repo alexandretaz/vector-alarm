@@ -216,7 +216,6 @@
             else{
                 var latLng = new google.maps.LatLng(location.lat, location.long)
             }
-            c
             var marker = new google.maps.Marker({
                 position: location,
                 label: ""+label,
