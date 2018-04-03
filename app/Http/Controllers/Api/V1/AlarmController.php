@@ -48,7 +48,6 @@ class AlarmController extends Controller
 
     public function point(Request $request) {
         $data = $request->toArray();
-        file_put_contents("/home/taz/vector-alarm/storage/logs/Api.log", serialize($data),FILE_APPEND);
         $jsonStr = key($data);
         $jsonObject = \json_decode($jsonStr);
 
