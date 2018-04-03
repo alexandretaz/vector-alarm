@@ -189,7 +189,7 @@
 
         @endphp
         var labelIndex = 0;
-        function initialize() {
+
             var center = { lat: {{ $firstLatitude }}, lng: {{ $firstLongitude }} };
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
@@ -198,8 +198,6 @@
 
 
             // Add a marker at the center of the map.
-            addMarker(center, map);
-        }
 
 
         @if(isset($call->points) && !empty($call->points))
