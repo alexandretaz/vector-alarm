@@ -224,7 +224,7 @@
             marker.push(innerMarker);
         }
 
-        var points = @php echo \json_encode($call->points)@endphp
+        var points = @php echo \json_encode($call->points)@endphp;
         for(i=0;i<points.length;i++){
             addMarker(points[i], map);
         }
