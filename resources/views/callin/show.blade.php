@@ -190,7 +190,7 @@
         @endphp
         var labelIndex = 0;
         function initialize() {
-            var center = { latitude: {{ $firstLatitude !!}, longitude: {{ $firstLongitude }} };
+            var center = { latitude: {{ $firstLatitude }}, longitude: {{ $firstLongitude }} };
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
                 center: center
