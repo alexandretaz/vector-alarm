@@ -209,11 +209,12 @@
             else{
                 var latLng = new google.maps.LatLng(location.lat, location.long)
             }
-            marker[] = new google.maps.Marker({
+            innerMarker = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
                 map: map
             });
+            marker.push(innerMarker);
         }
 
         var points = {!! json_encode($call->points) !!}
