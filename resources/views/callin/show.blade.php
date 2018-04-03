@@ -191,7 +191,7 @@
                     $labelPointsArr = range(1, count($objPoints));
                     $strRange="";
                     foreach($labelPointsArr as $labelPoint) {
-                    $strRange.=(string)$labelPoint;
+                    $strRange.=(string)"$labelPoint";
                     }
 
                 }
