@@ -195,17 +195,13 @@
                     $pointJson->lng = (float)$point->long;
                     $objPoints[]= clone $pointJson;
                 }
-                $labelPointsArr = range(1, count($objPoints));
-                $strRange="";
-                foreach($labelPointsArr as $labelPoint) {
-                $strRange.=(string)"$labelPoint";
-                }
 
             }
 
 
 
         @endphp
+        var labelIndex = 0;
         function initialize() {
             var center = { lat: {!! $firstLatitude !!}, lng: {!! $firstLongitude !!}};
             var map = new google.maps.Map(document.getElementById('map'), {
