@@ -219,9 +219,4 @@
         google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
-    <script>
-        setTimeout(function(){
-            window.location.reload(1);
-        }, 15000);
-    </script>
 @endsection
