@@ -206,7 +206,6 @@
 
 
         @if(isset($call->points) && !empty($call->points))
-        var marker = [];
         function addMarker(location, map) {
 
             var label = ++labelIndex;
@@ -216,12 +215,12 @@
             else{
                 var latLng = new google.maps.LatLng(location.lat, location.long)
             }
-            innerMarker = new google.maps.Marker({
+            console.log(latLng);
+            var marker = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
                 map: map
             });
-            marker.push(innerMarker);
         }
 
         var points = @php echo \json_encode($call->points)@endphp;
