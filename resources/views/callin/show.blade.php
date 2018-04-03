@@ -209,6 +209,7 @@
         function addMarker(location, map) {
 
             var label = ++labelIndex;
+            console.log(location);
             if(location.latitude&&location.longitude) {
                 var latLng = new google.maps.LatLng(location.latitude, location.longitude)
             }
