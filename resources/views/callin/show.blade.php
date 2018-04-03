@@ -183,8 +183,6 @@
                 $firstLongitude=-46.27998833333333;
             }
 
-            if(count($call->points)>=2){
-
 
 
 
@@ -206,9 +204,11 @@
 
         @if(isset($objPoints) && !empty($objPoints))
         function addMarker(location, map) {
+            point.lat = location.lat;
+            point.lng = location.long;
             var label = ++labelIndex;
             var marker = new google.maps.Marker({
-                position: location,
+                position: point,
                 label: ""+label,
                 map: map
             });
