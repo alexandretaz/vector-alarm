@@ -209,13 +209,14 @@
         function addMarker(location, map) {
 
             var label = ++labelIndex;
-            console.log(location);
+
             if(location.latitude&&location.longitude) {
                 var latLng = new google.maps.LatLng(parseFloat(location.latitude), parseFloat(location.longitude))
             }
             else{
                 var latLng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.long))
             }
+            console.log(latLng);
             var marker = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
