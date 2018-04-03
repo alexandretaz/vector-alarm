@@ -213,6 +213,11 @@
                 map:map
             });
         }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ&callback=initMap"
+            async defer></script>
+    <script>
         @if(isset($objPoints) && !empty($objPoints))
         function addMarker(location, map) {
 
@@ -228,11 +233,5 @@
         addMarker({!! json_encode($objPoint)!!}, map);
         @endforeach
         @endif
-
-
-
-
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ&callback=initMap"
-            async defer></script>
 @endsection
