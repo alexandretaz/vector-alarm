@@ -204,7 +204,7 @@
         function addMarker(location, map) {
             var label = ++labelIndex;
             var latLng = new google.maps.LatLng(location.latitude,location.longitude)
-            var marker = new google.maps.Marker({
+            var marker[] = new google.maps.Marker({
                 position: latLng,
                 label: ""+label,
                 map: map
