@@ -38,9 +38,6 @@ class AlarmController extends Controller
             }
 
             $alarm->points;
-            if($latitude!=0 && $longitude!=0) {
-                $alarm->addPoint($latitude, $longitude);
-            }
             return response(\json_encode($alarm),200);
         }
         return response(\json_encode(false),500);

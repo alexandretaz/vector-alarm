@@ -25,6 +25,9 @@ class Help extends Model
     public function addPoint($lat, $long)
     {
         $points = $this->getPointsAttribute();
+        if(!is_array($points)) {
+            $points=[];
+        }
         $point = new \stdClass();
         $point->lat = $lat;
         $point->long = $long;
@@ -49,11 +52,26 @@ class Help extends Model
 
     public static function createFromClient($client)
     {
+
+        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
+        if(!$openAlarms->isEmpty()){
+
+        }
+        $points=[];
+        if( !empty($latitude) &&!empty($longitude) ) {
+            $objPoints = new \stdClass();
+
+            $objPoints->latitude = $latitude;
+            $objPoints->longitude = $longitude;
+            $points[] = $objPoints;
+        }
+
         $alarm = new Help();
         $alarm->client_id = $client->id;
         $alarm->opened_at = $now->format('Y-m-d H:i:s');
-        $alarm->description="Alarme aberto pelo aplicativo";
+        $alarm->description="Pedido de ajuda enviado pelo aplicativo";
+        $alarm->points = \json_encode($points);
         $alarm->save();
         return $alarm;
     }

@@ -69,11 +69,7 @@ class Alarm extends Model
         $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
-            foreach($openAlarms as $openAlarm) {
-                $openAlarm->addInteraction("Fechado na criação de um novo alarm");
-                $openAlarm->closed_at= $now->format('Y-m-d H:i:s');
-                $openAlarm->save();
-            }
+
         }
         $points=[];
         if( !empty($latitude) &&!empty($longitude) ) {

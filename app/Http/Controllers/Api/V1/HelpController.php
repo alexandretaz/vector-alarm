@@ -15,17 +15,47 @@ use Illuminate\Http\Request;
 class HelpController extends Controller
 {
     public function start(Request $request) {
-        $user = Clients::getByDevice($request->input('device'), $request->input('token'));
+        $data = $request->toArray();
+        $jsonStr = key($data);
+        $jsonObject = \json_decode($jsonStr);
+        $imei = $jsonObject->imei;
+        $token = $jsonObject->token;
+        $latitude = str_replace("_",".",$jsonObject->latitude);
+        $longitude = str_replace("_",".",$jsonObject->longitude);
+        $user = Clients::getByDevice($imei, $token);
         if($user!==null) {
-            $help = Help::createFomClient($user);
+            if(empty($latitude) || empty($longitude)) {
+
+                $help = Help::createFomClient($user);
+            }
+            else{
+                $help = Alarm::createFromClient($user, $latitude, $longitude);
+            }
+
+            $help->points;
+            return response(\json_encode($help),200);
         }
-        return \response()->json($help);
+
+        return response(\json_encode(false),500);
     }
 
     public function point(Request $request) {
-        $help = Help::findOrFail($request->input('help_id'));
-        $help->addPoint($request->input('latitude'), $request->input('longitude'));
-        return response()->json($help);
+        $data = $request->toArray();
+        $jsonStr = key($data);
+        $jsonObject = \json_decode($jsonStr);
+
+        $imei = $jsonObject->imei;
+        $token = $jsonObject->token;
+        $latitude = str_replace("_",".",$jsonObject->latitude);
+        $longitude = str_replace("_",".",$jsonObject->longitude);
+        $user = Clients::getByDevice($imei, $token);
+        $help = $user->openHelps();
+
+        if($latitude!=0 && $longitude!=0) {
+            $help->addPoint($latitude, $longitude);
+        }
+
+        return response(\json_encode($help),200);
     }
 
     public function assume(Request $request) {
