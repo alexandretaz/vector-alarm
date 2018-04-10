@@ -29,7 +29,7 @@ class HelpController extends Controller
                 $help = Help::createFomClient($user);
             }
             else{
-                $help = Alarm::createFromClient($user, $latitude, $longitude);
+                $help = Help::createFromClient($user, $latitude, $longitude);
             }
 
             $help->points;
