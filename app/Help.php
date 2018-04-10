@@ -50,7 +50,7 @@ class Help extends Model
         $this->save();
     }
 
-    public static function createFromClient($client)
+    public static function createFromClient($client, $latitude = null, $longitude = null)
     {
 
         $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
