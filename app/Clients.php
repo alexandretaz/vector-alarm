@@ -85,14 +85,18 @@ class Clients extends Model
     public function addDevice($imei, $brand, $model, $token)
     {
         $now = new \DateTime();
-        $newDevice = new Device();
-        $newDevice->imei = $imei;
-        $newDevice->brand = $brand;
-        $newDevice->model = $model;
-        $newDevice->token = $token;
-        $newDevice->owner_id = $this->id;
-        $newDevice->first_login = $now->format('Y-m-d H:i:s');
-        $newDevice->save();
+        $device = Device::query()->select()->where('imei', 'like', $imei)->get();
+        if($device->isEmpty()) {
+            $newDevice = new Device();
+            $newDevice->imei = $imei;
+            $newDevice->brand = $brand;
+            $newDevice->model = $model;
+            $newDevice->token = $token;
+            $newDevice->owner_id = $this->id;
+            $newDevice->first_login = $now->format('Y-m-d H:i:s');
+            $newDevice->save();
+        }
+
     }
 
     public function getContatosPrioridadeAttribute()
