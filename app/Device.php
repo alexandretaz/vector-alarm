@@ -9,6 +9,6 @@ class Device extends Model
     protected $appends = ['client'];
     public function client()
     {
-        return $this->belongsTo('App\Clients','owner_id');
+        return $this->belongsTo('App\Clients','id', 'owner_id');
     }
 }
