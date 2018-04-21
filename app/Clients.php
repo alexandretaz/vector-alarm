@@ -36,7 +36,7 @@ class Clients extends Model
 
     public function openAlarms()
     {
-        return Alarm::query()->select()->where('client_id','=',$this->id)->whereNull('closed_at')->first();
+        return Alarm::query()->select()->where('client_id','=',$this->id)->whereNull('closed_at')->orderBy('id', 'desc')->first();
     }
 
     public function helps()
