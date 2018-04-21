@@ -86,7 +86,7 @@
         function check(){
             window.setInterval(function(){
                 $.ajax({
-                    url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
+                    url: '/api/V1/lastcalls/'+maxAlarm+'/'+maxHelp,
                     method:'get',
                     dataType:'json'
                 }).done(function (data) {
