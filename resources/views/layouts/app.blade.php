@@ -84,7 +84,7 @@
         var maxAlarm;
         var maxHelp;
         function check(){
-            window.setTimeout(function(){
+            window.setInterval(function(){
                 $.ajax({
                     url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
                     method:'get',
