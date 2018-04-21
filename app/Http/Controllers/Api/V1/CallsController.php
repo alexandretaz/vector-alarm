@@ -21,9 +21,20 @@ class CallsController extends Controller
         public function getCalls($maxAlarmCall=null, $maxHelpCall=null){
             $openAlarms = Alarm::getOpen();
             $openHelps = Help::getOpen();
-            dd($openAlarms->first());
-            $lastAlarm = $openAlarms->first()->id;
-            $lastHelp = $openHelps->first()->id;
+            if($lastAlarm = $openAlarms->first()) {
+                $lastAlarm = $openAlarms->first()->id;
+            }
+            else{
+                $lastAlarm = 0;
+            }
+            if( $lastHelp = $openHelps->first())
+            {
+                $lastHelp = $openHelps->first()->id;
+            }
+            else{
+                $lastHelp = 0;
+            }
+
             $lastAlarms = [];
             $lastHelps = [];
             if($maxAlarmCall!==null && $maxHelpCall !==null){
