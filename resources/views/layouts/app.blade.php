@@ -81,7 +81,44 @@
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
+        var maxAlarm;
+        var maxHelp;
+        function check(){
+            window.setTimeout(function(){
+                $.ajax({
+                    url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
+                    method:'get',
+                    dataType:'json'
+                }).done(function (data) {
+                    console.dir(data);
+                    $("#callNumbers").html(data.openCalls);
+                    if(data.lastAlarm>maxAlarm || data.lastHelp>maxHelp){
+                        new Audio('/alarm.mp3').play();
+                        maxAlarm = data.lastAlarm;
+                        maxHelp = data.lastHelp;
+                        alert('Você tem novos chamados');
+                    }
+                });
+            }, 1000);
+            check();
+        }
 
+        $(document).on('ready', function(){
+            $.ajax({
+                url: '/api/V1/calls',
+                method:'get',
+                dataType:'json',
+            }).done(function(data){
+                console.dir(data);
+                $("#callNumbers").html(data.openCalls);
+                maxAlarm = data.lastAlarm;
+                maxHelp = data.lastHelp;
+                check();
+            });
+
+
+
+        });
 
     </script>
 </body>
