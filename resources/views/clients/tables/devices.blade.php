@@ -1,3 +1,7 @@
+@php
+$devices = $client->devices;
+@endphp
+
 <div class="row">
     <div class="col-md-12">
         <table class="table-responsive table-bordered table-striped" style="min-width: 100%">
