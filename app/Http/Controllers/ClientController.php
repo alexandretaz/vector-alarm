@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clients;
 use App\Contract;
+use App\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
