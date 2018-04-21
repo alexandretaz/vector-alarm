@@ -120,4 +120,12 @@ class ClientController extends Controller
 
     }
 
+    public function changeDeviceStatus($deviceId, $newStatus)
+    {
+        $device = Device::findOrFail($deviceId);
+        $device->authorized = $newStatus;
+        $device->save();
+        return redirect('/client/'.$device->owner_id);
+    }
+
 }

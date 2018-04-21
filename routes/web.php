@@ -60,6 +60,7 @@ Route::get('/chamados/{status?}','CallInController@list')->name('call.list')->mi
 Route::get('/chamado/show/{type}/{id}','CallInController@show')->name('call.show')->middleware('auth');
 Route::get('/chamado/add', 'CallInController@search')->name('call.add')->middleware('auth');
 Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.client')->middleware('auth');
+Route::get('/device/{deviceId}/{newStatus}', 'ClientController@changeDeviceStatus')->name('device.change.status');
 
 
 
