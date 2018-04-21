@@ -103,7 +103,7 @@
 
         }
 
-        $(document).on('ready', function(){
+        $(document).ready( function(){
             $.ajax({
                 url: '/api/V1/calls',
                 method:'get',
