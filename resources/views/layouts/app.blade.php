@@ -93,7 +93,11 @@
                     maxAlarm = data.lastAlarm;
                     maxHelp = data.lastHelp;
                 }
+            }).done(function(data){
+                console.dir(data);
             });
+
+
             window.setTimeout(function(){
                 $.ajax({
                     url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
