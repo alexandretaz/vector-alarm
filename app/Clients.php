@@ -85,7 +85,7 @@ class Clients extends Model
     public function addDevice($imei, $brand, $model, $token)
     {
         $now = new \DateTime();
-        $device = Device::query()->select()->where('imei', 'like', $imei)->get();
+        $device = Device::query()->select()->where('imei', 'like', $imei)->where('owner_id','=', $this->id)->get();
         if($device->isEmpty()) {
             $newDevice = new Device();
             $newDevice->imei = $imei;
