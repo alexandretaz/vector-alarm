@@ -97,6 +97,7 @@
                         maxAlarm = data.lastAlarm;
                         maxHelp = data.lastHelp;
                         alert('Você tem novos chamados');
+                        window.location.href="/chamados";
                     }
                 });
             }, 2000);
