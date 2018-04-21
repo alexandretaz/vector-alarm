@@ -41,6 +41,7 @@
                         <li> <a href="{{route('users')}}">Usuários</a></li>
                         <li><a href="{{route('contracts')}}">Contratos</a></li>
                         <li><a href="{{route('home')}}">Central de Gerenciamento</a></li>
+                        <li><a href="/chamados">Chamados</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
