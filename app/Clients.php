@@ -9,6 +9,7 @@ class Clients extends Model
 {
     protected $fillable = ['name', 'dependents','parent_client', 'cpf', 'contract_id', 'rg', 'tel_com', 'tel_res', 'tel_cel'
         , 'grau_parentesco',  'veiculo',  'contatos_prioridade',  'contatos_autorizados', 'senha', 'contra_senha', 'position', 'procedimentos_especiais', 'code'];
+    protected $appends = ['devices'];
     public function contract()
     {
         return $this->belongsTo('App\Contract');
