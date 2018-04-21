@@ -112,6 +112,8 @@
                             alert('Você tem novos chamados');
                         }
                     }
+                }).done(function (data) {
+                    console.dir(data);
                 });
                 }, 1000);
         });
