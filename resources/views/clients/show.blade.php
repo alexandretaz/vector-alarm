@@ -90,6 +90,8 @@
                                 </div>
                         </div>
                         <div class="row">
+                            <h3>Aparelhos cadastrados</h3>
+                            @include('clients.table.devices',['devices', $client->devices])
                                 @if(empty($client->parent_client))
 
                                     <h3>Veículos</h3>

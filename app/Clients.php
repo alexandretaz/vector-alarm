@@ -22,10 +22,16 @@ class Clients extends Model
         return null;
     }
 
+    public function devices()
+    {
+        return $this->hasMany('App\Device','owner_id');
+    }
+
     public function alarms()
     {
         return $this->hasMany('App\Alarm');
     }
+
 
     public function openAlarms()
     {
@@ -116,7 +122,7 @@ class Clients extends Model
 
     public static function getByDevice($imei, $token)
     {
-        $device = Device::select()->where('imei','like', $imei)->where('token','like', $token)->first();
+        $device = Device::select()->where('imei','like', $imei)->where('token','like', $token)->where('authorized','=',1)->first();
         return Clients::findOrFail($device->owner_id);
 
     }

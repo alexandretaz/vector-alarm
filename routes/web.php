@@ -10,12 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Redis;
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+
+Route::get('/chat', function() {
+
+   // Publicar
+
+    $data = ['evento'=>"Inicio",
+        'data' =>['usuario'=>'Ale']
+    ];
+
+    Redis::publish('test-channel', json_encode($data));
+
+    return 'Done;';
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contracts', 'ContractController@index')->name('contracts')->middleware('auth');
