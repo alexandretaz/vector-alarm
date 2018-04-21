@@ -92,7 +92,6 @@
                         <div class="row">
                             <h3>Aparelhos cadastrados</h3>
                             @if(!empty($client->devices))
-                                {{dd($client)}}
                             @include('clients.tables.devices',['devices', $client->devices])
                             @endif
                                 @if(empty($client->parent_client))
