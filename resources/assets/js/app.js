@@ -42,13 +42,11 @@ $(document).on('ready', function(){
         url: '/api/V1/calls',
         method:'get',
         dataType:'json',
-        sucess:function(data){
-            $("#callNumbers").html(data.openCalls);
-            maxAlarm = data.lastAlarm;
-            maxHelp = data.lastHelp;
-        }
     }).done(function(data){
         console.dir(data);
+        $("#callNumbers").html(data.openCalls);
+        maxAlarm = data.lastAlarm;
+        maxHelp = data.lastHelp;
     });
 
 
@@ -56,18 +54,16 @@ $(document).on('ready', function(){
         $.ajax({
             url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
             method:'get',
-            dataType:'json',
-            sucess:function(data){
-                $("#callNumbers").html(data.openCalls);
-                if(data.lastAlarm>maxAlarm || data.lastHelp>maxHelp){
-                    new Audio('/alarm.mp3').play();
-                    maxAlarm = data.lastAlarm;
-                    maxHelp = data.lastHelp;
-                    alert('Você tem novos chamados');
-                }
-            }
+            dataType:'json'
         }).done(function (data) {
             console.dir(data);
+        $("#callNumbers").html(data.openCalls);
+        if(data.lastAlarm>maxAlarm || data.lastHelp>maxHelp){
+            new Audio('/alarm.mp3').play();
+            maxAlarm = data.lastAlarm;
+            maxHelp = data.lastHelp;
+            alert('Você tem novos chamados');
+            }
         });
     }, 1000);
 });
