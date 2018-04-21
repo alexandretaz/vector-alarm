@@ -37,34 +37,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 require('jquery');
 var maxAlarm = 0;
 var maxHelp = 0;
-$(document).on('ready', function(){
-    $.ajax({
-        url: '/api/V1/calls',
-        method:'get',
-        dataType:'json',
-    }).done(function(data){
-        console.dir(data);
-        $("#callNumbers").html(data.openCalls);
-        maxAlarm = data.lastAlarm;
-        maxHelp = data.lastHelp;
-    });
 
-
-    window.setTimeout(function(){
-        $.ajax({
-            url: '/api/V1/lastcall/'+maxAlarm+'/'+maxHelp,
-            method:'get',
-            dataType:'json'
-        }).done(function (data) {
-            console.dir(data);
-        $("#callNumbers").html(data.openCalls);
-        if(data.lastAlarm>maxAlarm || data.lastHelp>maxHelp){
-            new Audio('/alarm.mp3').play();
-            maxAlarm = data.lastAlarm;
-            maxHelp = data.lastHelp;
-            alert('Você tem novos chamados');
-            }
-        });
-    }, 1000);
-});
 
