@@ -20,7 +20,6 @@
                         <td>@if($device->authorized==1) Ativo @elseif($device->autorized==0) Inativo @else Cacnelado @endif</td>
                         <td>@if($device->authorized==1)<a href="/device/{{$device->id}}/0">Inativar</a>@elseif($device->autorized==0) <a href="/device/{{$device->id}}/1">Ativar</a>@else Cancelado @endif</td>
                     </tr>
-                @endif
             @empty
                 <td colspan="7">Nenhum Aparelho Cadastrado</td>
             @endforelse
