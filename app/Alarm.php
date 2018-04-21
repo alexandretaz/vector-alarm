@@ -93,6 +93,10 @@ class Alarm extends Model
     {
 
     }
+    public static function getOpen()
+    {
+        return Alarm::query()->select()->whereNull('closed_at')->get();
+    }
 
 
 

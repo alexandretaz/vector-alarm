@@ -75,4 +75,8 @@ class Help extends Model
         $alarm->save();
         return $alarm;
     }
+
+    public static function getOpen(){
+        return Help::query()->select()->whereNull('closed_at')->get();
+    }
 }
