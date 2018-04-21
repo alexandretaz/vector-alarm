@@ -77,6 +77,6 @@ class Help extends Model
     }
 
     public static function getOpen(){
-        return Help::query()->select()->whereNull('closed_at')->get();
+        return Help::query()->select()->whereNull('closed_at')->orderBy('id', 'desc')->get();
     }
 }

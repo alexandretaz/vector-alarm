@@ -22,7 +22,7 @@ Route::group(['prefix'=>'/V1','middleware'=>'api','namespace'=>'Api\V1'],functio
         return response('Olá Mundo');
     });
     Route::get('/calls', 'CallsController@getCalls')->name('api.get.all.calls');
-    Route::get('/lastcalls/{maxAlarm}/{maxHelp}','CallsController@getCalls')->name('api.get.last.calls');
+    Route::get('/lastcalls/{maxAlarmCall}/{maxHelpCall}','CallsController@getCalls')->name('api.get.last.calls');
 
     Route::post('/add/alarm/point', 'AlarmController@point')->name('api.ping.alarm');
     Route::post('/auth','AuthController@login')->name('api.auth');
