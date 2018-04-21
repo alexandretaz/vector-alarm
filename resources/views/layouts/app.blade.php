@@ -99,8 +99,8 @@
                         alert('Você tem novos chamados');
                     }
                 });
-            }, 1000);
-            check();
+            }, 2000);
+
         }
 
         $(document).on('ready', function(){
