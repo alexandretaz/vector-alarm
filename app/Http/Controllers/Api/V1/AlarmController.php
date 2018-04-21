@@ -53,6 +53,10 @@ class AlarmController extends Controller
         $latitude = str_replace("_",".",$jsonObject->latitude);
         $longitude = str_replace("_",".",$jsonObject->longitude);
         $user = Clients::getByDevice($imei, $token);
+        if(!is_object($user)){
+            print_r($request->toArray());
+            abort(500);
+        }
         $alarm = $user->openAlarms();
 
         if($latitude!=0 && $longitude!=0) {
