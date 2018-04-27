@@ -25,9 +25,7 @@ class Help extends Model
     public function addPoint($lat, $long)
     {
         $points = $this->getPointsAttribute();
-        if(!is_array($points)) {
-            $points=[];
-        }
+
         $point = new \stdClass();
         $point->lat = $lat;
         $point->long = $long;
@@ -50,15 +48,26 @@ class Help extends Model
         $this->save();
     }
 
-    public static function createFromClient($client, $latitude = null, $longitude = null)
+    public static function createFromClient($client, $device, $latitude = null, $longitude = null)
     {
 
-        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
+        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->where('device_id','=', $device->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
-
+            $alarm = $openAlarms->first();
+            $points = $alarm->getPointsAttribute();
+            if(!is_array($points)) {
+                $points=[];
+            }
         }
-        $points=[];
+        else{
+            $alarm = new Help();
+            $points=[];
+            $alarm->client_id = $client->id;
+            $alarm->opened_at = $now->format('Y-m-d H:i:s');
+            $alarm->description="Pedido de ajuda enviado pelo aplicativo";
+        }
+
         if( !empty($latitude) &&!empty($longitude) ) {
             $objPoints = new \stdClass();
 
@@ -67,10 +76,8 @@ class Help extends Model
             $points[] = $objPoints;
         }
 
-        $alarm = new Help();
-        $alarm->client_id = $client->id;
-        $alarm->opened_at = $now->format('Y-m-d H:i:s');
-        $alarm->description="Pedido de ajuda enviado pelo aplicativo";
+
+
         $alarm->points = \json_encode($points);
         $alarm->save();
         return $alarm;

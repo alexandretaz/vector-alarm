@@ -71,15 +71,19 @@ class Alarm extends Model
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
             $alarm = $openAlarms->first();
+            $points = $alarm->getPointsAttribute();
+            if(!is_array($points)) {
+                $points=[];
+            }
         }
         else{
             $alarm = new Alarm();
             $alarm->client_id = $client->id;
             $alarm->opened_at = $now->format('Y-m-d H:i:s');
             $alarm->description="Alarme aberto pelo aplicativo";
-
+            $points=[];
         }
-        $points=[];
+
         if( !empty($latitude) &&!empty($longitude) ) {
             $objPoints = new \stdClass();
 
