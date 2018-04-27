@@ -10,7 +10,7 @@ class HomeController extends CoreHomeController
 
     public function points($size)
     {
-        return response()->json($this->getPoints($size));
+        return response()->json($this->getPoints($size+1));
     }
     public function __construct()
     {
