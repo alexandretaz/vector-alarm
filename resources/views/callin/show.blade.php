@@ -251,6 +251,6 @@
         }
         $(document).ready( function(){
             checkPoints();
-        }
+        });
     </script>
 @endsection
