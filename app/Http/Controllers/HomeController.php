@@ -18,13 +18,13 @@ class HomeController extends Controller
         return view('home', ['points'=>$points]);
     }
 
-    public function points()
+    public function points($size)
     {
         return response()->json($this->getPoints());
     }
 
 
-    private function getPoints()
+    private function getPoints($size=null)
     {
         $alarms = Alarm::getOpen();
         $helps = Help::getOpen();
@@ -48,6 +48,9 @@ class HomeController extends Controller
             }
         }
         unset($actionPoints, $pointToAdd);
+        if($size!==null) {
+            $points = array_slice($points, $size);
+        }
         return $points;
     }
 

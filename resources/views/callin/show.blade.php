@@ -235,6 +235,22 @@
         }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
+        function check(){
+            window.setInterval(function(){
+                $.ajax({
+                    url: '/api/V1/lastPoint/'+pointSize,
+                    method:'get',
+                    dataType:'json'
+                }).done(function (data) {
+                    console.dir(data);
+                    addMarker(data,map);
 
+                });
+            }, 2000);
+
+        }
+        $(document).ready( function(){
+            check();
+        }
     </script>
 @endsection
