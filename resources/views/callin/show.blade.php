@@ -243,11 +243,11 @@
                     method:'get',
                     dataType:'json'
                 }).done(function (data) {
-                    console.dir('pontos',data);
+                    console.dir(data);
                     addMarker(data,map);
 
                 });
-            }, 2000);
+            }, 3000);
 
         }
     </script>
