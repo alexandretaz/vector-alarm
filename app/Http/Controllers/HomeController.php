@@ -26,6 +26,9 @@ class HomeController extends Controller
         $alarms = Alarm::getOpen();
         $helps = Help::getOpen();
         $points = [];
+        if($size!==null) {
+            $points = array_slice($points, $size);
+        }
         if(!empty($alarms) ) {
             foreach ($alarms as $alarm) {
                 if(isset($alarm->points) && !empty($alarm->points)) {
@@ -45,9 +48,7 @@ class HomeController extends Controller
             }
         }
         unset($actionPoints, $pointToAdd);
-        if($size!==null) {
-            $points = array_slice($points, $size);
-        }
+
         return $points;
     }
 

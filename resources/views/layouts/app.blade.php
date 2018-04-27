@@ -110,7 +110,6 @@
                 method:'get',
                 dataType:'json',
             }).done(function(data){
-                console.dir(data);
                 $("#callNumbers").html(data.openCalls);
                 maxAlarm = data.lastAlarm;
                 maxHelp = data.lastHelp;
