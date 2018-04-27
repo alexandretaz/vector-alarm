@@ -170,7 +170,7 @@
         $arrPoints = $call->points;
         $firstPoint = current($arrPoints);
         $lastPoint = end($arrPoints);
-        dump($call->points);
+        dd($call->points);
         dd($lastPoint);
         reset($arrPoints);
             if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
@@ -183,6 +183,7 @@
             }
         }
         else{
+        dd($call->points);
             $lastLatitude= -23.7299983333;
             $lastLongitude=-46.27998833333333;
         }
