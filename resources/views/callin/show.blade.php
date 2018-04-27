@@ -190,6 +190,7 @@
 
         var labelIndex = 0;
         var map = null;
+        var pointSize = {{count($arrPoints)}};
         var latitude = {{$lastLatitude}};
         var longitude = {{$lastLongitude}};
         function initialize() {
