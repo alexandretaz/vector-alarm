@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Alarm;
 use App\Clients;
+use App\Device;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,12 +29,13 @@ class AlarmController extends Controller
         $latitude = str_replace("_",".",$jsonObject->latitude);
         $longitude = str_replace("_",".",$jsonObject->longitude);
         $user = Clients::getByDevice($imei, $token);
+        $device = Device::where(['imei'=>$imei,'token'=>$token, 'owner_id'=>$user->id])->first();
         if($user!==null) {
             if(empty($latitude) || empty($longitude)) {
-                $alarm = Alarm::createFromClient($user);
+                $alarm = Alarm::createFromClient($user, $device);
             }
             else{
-                $alarm = Alarm::createFromClient($user, $latitude, $longitude);
+                $alarm = Alarm::createFromClient($user, $device, $latitude, $longitude);
 
             }
 
