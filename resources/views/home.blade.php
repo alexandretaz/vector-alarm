@@ -37,11 +37,6 @@
                     $firstLatitude= -23.7299983333;
                     $firstLongitude=-46.27998833333333;
                 }
-            
-            reset($points);
-
-
-
 
 
             @endphp
@@ -58,6 +53,7 @@
             });
             putPoints();
         }
+        initialize();
 
 
     // Add a marker at the center of the map.
