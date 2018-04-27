@@ -185,12 +185,6 @@
             $lastLongitude=-46.27998833333333;
         }
 
-    reset($call->points);
-
-
-
-
-
     @endphp
     <script>
 
