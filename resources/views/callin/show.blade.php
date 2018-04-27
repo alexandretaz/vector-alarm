@@ -249,7 +249,9 @@
                             addMarker(data[i], map);
                         }
                         var lastIndex = data.length -1;
-                        console.log(data[lastIndex]);
+                        var latLng = new google.maps.LatLng(data.latitude, data.longitude);
+                        map.setCenter(latLng);
+                        pointSize = pointSize+data.length;
                     }
 
 
