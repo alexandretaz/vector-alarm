@@ -64,11 +64,19 @@ class Alarm extends Model
         $this->save();
     }
 
-    public static function createFromClient($client, $latitude=null, $longitude=null)
+    public static function createFromClient($client, $device, $latitude=null, $longitude=null)
     {
-        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->whereNull('closed_at')->get();
+
+        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->where('device','=', $device->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
+            $alarm = $openAlarms->first();
+        }
+        else{
+            $alarm = new Alarm();
+            $alarm->client_id = $client->id;
+            $alarm->opened_at = $now->format('Y-m-d H:i:s');
+            $alarm->description="Alarme aberto pelo aplicativo";
 
         }
         $points=[];
@@ -79,13 +87,10 @@ class Alarm extends Model
             $objPoints->longitude = $longitude;
             $points[] = $objPoints;
         }
-
-        $alarm = new Alarm();
-        $alarm->client_id = $client->id;
-        $alarm->opened_at = $now->format('Y-m-d H:i:s');
-        $alarm->description="Alarme aberto pelo aplicativo";
         $alarm->points = \json_encode($points);
         $alarm->save();
+
+
         return $alarm;
     }
 
