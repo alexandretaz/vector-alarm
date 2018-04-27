@@ -32,6 +32,7 @@ class HomeController extends Controller
         if(!empty($alarms) ) {
             foreach ($alarms as $alarm) {
                 if(isset($alarm->points) && !empty($alarm->points)) {
+                    dd($alarm->points);
                     $pointToAdd = end($alarm->points);
                     $points [] = $pointToAdd;
                 }
