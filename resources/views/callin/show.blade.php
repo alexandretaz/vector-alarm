@@ -171,6 +171,8 @@
             $arrPoints = $call->points;
             $firstPoint = current($arrPoints);
             $lastPoint = end($arrPoints);
+            dump($call->points);
+            dd($lastPoint);
             reset($arrPoints);
                 if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
                 $lastPoint = (float)$lastPoint->latitude;
