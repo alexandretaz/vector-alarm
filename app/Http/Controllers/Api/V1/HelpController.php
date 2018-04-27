@@ -23,14 +23,16 @@ class HelpController extends Controller
         $token = $jsonObject->token;
         $latitude = str_replace("_",".",$jsonObject->latitude);
         $longitude = str_replace("_",".",$jsonObject->longitude);
+
         $user = Clients::getByDevice($imei, $token);
+        $device = Device::where(['imei'=>$imei,'token'=>$token, 'owner_id'=>$user->id])->first();
         if($user!==null) {
             if(empty($latitude) || empty($longitude)) {
 
-                $help = Help::createFomClient($user);
+                $help = Help::createFomClient($user, $device);
             }
             else{
-                $help = Help::createFromClient($user, $latitude, $longitude);
+                $help = Help::createFromClient($user, $device, $latitude, $longitude);
             }
 
             $help->points;
