@@ -249,6 +249,10 @@
             }, 2000);
 
         }
+    </script>
+@endsection
+@section('body_scripts')
+    <script>
         $(document).ready( function(){
             checkPoints();
         });
