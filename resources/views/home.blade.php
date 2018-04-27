@@ -42,8 +42,8 @@
             @endphp
     var labelIndex = 0;
     var map = null;
-    var latitude = {{$firstLatitude}}
-    var longitude = {{$firstLongitude}}
+    var latitude = {{$firstLatitude}};
+    var longitude = {{$firstLongitude}};
         function initialize() {
             var latLng = new google.maps.LatLng(latitude, longitude)
 
@@ -53,7 +53,7 @@
             });
             putPoints();
         }
-        initialize();
+
 
 
     // Add a marker at the center of the map.
