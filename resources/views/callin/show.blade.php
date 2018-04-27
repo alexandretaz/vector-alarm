@@ -244,7 +244,14 @@
                     dataType:'json'
                 }).done(function (data) {
                     console.dir(data);
-                    addMarker(data,map);
+                    if(data.length>=1) {
+                        for (i = 0; i < data.length; i++) {
+                            addMarker(data[i], map);
+                        }
+                        var lastIndex = data.length -1;
+                        console.log(data[lastIndex]);
+                    }
+
 
                 });
             }, 3000);
