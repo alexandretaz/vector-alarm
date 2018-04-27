@@ -71,7 +71,7 @@
             var latLng = new google.maps.LatLng(latitude, longitude)
 
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 3,
+                zoom: 4,
                 center:latLng
             });
             putPoints();
