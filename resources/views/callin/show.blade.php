@@ -172,7 +172,7 @@
         $lastPoint = end($arrPoints);
         reset($arrPoints);
             if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
-            $lastPoint = (float)$lastPoint->latitude;
+            $lastLatitude = (float)$lastPoint->latitude;
             $lastLongitude = (float)$lastPoint->longitude;
             }
             else{
