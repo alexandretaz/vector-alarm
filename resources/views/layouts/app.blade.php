@@ -122,5 +122,6 @@
         });
 
     </script>
+@yield('body_scripts')
 </body>
 </html>
