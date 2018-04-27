@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Alarm;
+use App\Help;
 use Illuminate\Http\Request;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
@@ -11,9 +13,39 @@ class HomeController extends Controller
 
     public function index()
     {
-        Mapper::map(53.381128999999990000, -1.470085000000040000);
+       $points = $this->getPoints();
 
-        return view('home');
+        return view('home', ['points'=>$points]);
+    }
+
+    public function points()
+    {
+        return response()->json($this->getPoints());
+    }
+
+
+    private function getPoints()
+    {
+        $alarms = Alarm::getOpen();
+        $helps = Help::getOpen();
+        $points = [];
+        if(!empty($alarms) ) {
+            foreach ($alarms as $alarm) {
+                if(isset($alarm->points) && !empty($alarm->points)) {
+                    $pointToAdd = end($alarm->points);
+                    $points [] = $pointToAdd;
+                }
+            }
+        }
+        if(!empty($points)) {
+            foreach ($helps as $help) {
+                if(isset($alarm->points) && !empty($alarm->points)) {
+                    $pointToAdd = end($help->points);
+                    $points [] = $pointToAdd;
+                }
+            }
+        }
+        return $points;
     }
 
     /**
