@@ -165,36 +165,37 @@
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ"></script>
-    <script>
-        @php
-            if(!empty($call->points)){
-            $arrPoints = $call->points;
-            $firstPoint = current($arrPoints);
-            $lastPoint = end($arrPoints);
-            dump($call->points);
-            dd($lastPoint);
-            reset($arrPoints);
-                if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
-                $lastPoint = (float)$lastPoint->latitude;
-                $lastLongitude = (float)$lastPoint->longitude;
-                }
-                else{
-                $lastLatitude= $lastPoint->lat;
-                $lastLongitude=$lastPoint->long;
-                }
+    @php
+        if(!empty($call->points)){
+        $arrPoints = $call->points;
+        $firstPoint = current($arrPoints);
+        $lastPoint = end($arrPoints);
+        dump($call->points);
+        dd($lastPoint);
+        reset($arrPoints);
+            if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
+            $lastPoint = (float)$lastPoint->latitude;
+            $lastLongitude = (float)$lastPoint->longitude;
             }
             else{
-                $lastLatitude= -23.7299983333;
-                $lastLongitude=-46.27998833333333;
+            $lastLatitude= $lastPoint->lat;
+            $lastLongitude=$lastPoint->long;
             }
+        }
+        else{
+            $lastLatitude= -23.7299983333;
+            $lastLongitude=-46.27998833333333;
+        }
 
-        reset($call->points);
+    reset($call->points);
 
 
 
 
 
-        @endphp
+    @endphp
+    <script>
+
         var labelIndex = 0;
         var map = null;
         var latitude = {{$lastLatitude}};
