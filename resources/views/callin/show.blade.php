@@ -123,7 +123,7 @@
             </div>
         </div>
         @endif
-        {{--@if(!empty($call->interactions))
+        @if(!empty($call->interactions))
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -152,7 +152,7 @@
             </div>
         </div>
         @endif
-        --}}
+
     </div>
     <div class="container">
         <div class="row">
@@ -168,7 +168,7 @@
     <script>
         @php
             if(!empty($call->points)){
-            $firstPoint = current($call->points);
+            $firstPoint = end($call->points);
                 if(!isset($firstPoint->lat) && !isset($firstPoint->long)) {
                 $firstLatitude = (float)$firstPoint->latitude;
                 $firstLongitude = (float)$firstPoint->longitude;
@@ -182,6 +182,8 @@
                 $firstLatitude= -23.7299983333;
                 $firstLongitude=-46.27998833333333;
             }
+
+        reset($call->points);
 
 
 
@@ -235,9 +237,6 @@
         }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
-        setTimeout(function(){
-            window.location.reload(1);
-        }, 60000);
 
     </script>
 @endsection

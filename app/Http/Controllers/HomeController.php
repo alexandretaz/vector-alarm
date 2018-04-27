@@ -32,7 +32,7 @@ class HomeController extends Controller
         if(!empty($alarms) ) {
             foreach ($alarms as $alarm) {
                 if(isset($alarm->points) && !empty($alarm->points)) {
-                    $actionPoints = clone $alarm->points;
+                    $actionPoints = $alarm->points;
                     $pointToAdd = end($actionPoints);
                     $points [] = $pointToAdd;
                 }
@@ -40,8 +40,8 @@ class HomeController extends Controller
         }
         if(!empty($points)) {
             foreach ($helps as $help) {
-                if(isset($alarm->points) && !empty($alarm->points)) {
-                    $actionPoints = clone $alarm->points;
+                if(isset($help->points) && !empty($help->points)) {
+                    $actionPoints = $alarm->points;
                     $pointToAdd = end($actionPoints);
                     $points [] = $pointToAdd;
                 }
