@@ -243,7 +243,6 @@
                     method:'get',
                     dataType:'json'
                 }).done(function (data) {
-                    console.dir(data);
                     if(data.length>=1) {
                         for (i = 0; i < data.length; i++) {
                             addMarker(data[i], map);
