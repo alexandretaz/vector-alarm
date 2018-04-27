@@ -168,19 +168,22 @@
     <script>
         @php
             if(!empty($call->points)){
-            $firstPoint = end($call->points);
-                if(!isset($firstPoint->lat) && !isset($firstPoint->long)) {
-                $firstLatitude = (float)$firstPoint->latitude;
-                $firstLongitude = (float)$firstPoint->longitude;
+            $arrPoints = $call->points;
+            $firstPoint = current($arrPoints);
+            $lastPoint = end($arrPoints);
+            reset($arrPoints);
+                if(!isset($lastPoint->lat) && !isset($lastPoint->long)) {
+                $lastPoint = (float)$lastPoint->latitude;
+                $lastLongitude = (float)$lastPoint->longitude;
                 }
                 else{
-                $firstLatitude= $firstPoint->lat;
-                $firstLongitude=$firstPoint->long;
+                $lastLatitude= $lastPoint->lat;
+                $lastLongitude=$lastPoint->long;
                 }
             }
             else{
-                $firstLatitude= -23.7299983333;
-                $firstLongitude=-46.27998833333333;
+                $lastLatitude= -23.7299983333;
+                $lastLongitude=-46.27998833333333;
             }
 
         reset($call->points);
@@ -192,8 +195,8 @@
         @endphp
         var labelIndex = 0;
         var map = null;
-        var latitude = {{$firstLatitude}}
-        var longitude = {{$firstLongitude}}
+        var latitude = {{$lastLatitude}};
+        var longitude = {{$lastLongitude}};
         function initialize() {
             var latLng = new google.maps.LatLng(latitude, longitude)
 
