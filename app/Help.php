@@ -70,7 +70,7 @@ class Help extends Model
 
         if( !empty($latitude) &&!empty($longitude) ) {
             $objPoints = new \stdClass();
-
+            $alarm->device_id = $device->id;
             $objPoints->latitude = $latitude;
             $objPoints->longitude = $longitude;
             $points[] = $objPoints;

@@ -79,6 +79,7 @@ class Alarm extends Model
         else{
             $alarm = new Alarm();
             $alarm->client_id = $client->id;
+            $alarm->device_id = $device->id;
             $alarm->opened_at = $now->format('Y-m-d H:i:s');
             $alarm->description="Alarme aberto pelo aplicativo";
             $points=[];
