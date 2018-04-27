@@ -67,7 +67,7 @@ class Alarm extends Model
     public static function createFromClient($client, $device, $latitude=null, $longitude=null)
     {
 
-        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->where('device','=', $device->id)->whereNull('closed_at')->get();
+        $openAlarms = self::query()->select()->where('client_id','=', $client->id)->where('device_id','=', $device->id)->whereNull('closed_at')->get();
         $now = new \DateTime();
         if(!$openAlarms->isEmpty()){
             $alarm = $openAlarms->first();
