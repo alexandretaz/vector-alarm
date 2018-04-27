@@ -17,7 +17,6 @@
         </div>
     </div>
 </div>
-{{dd($points)}}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNmBHNzosBBw32HGR34Qd6JZ4CvmJeWQ&callback=initMap"
         async defer></script>
 <script>
