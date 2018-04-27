@@ -12,6 +12,10 @@ class HomeController extends CoreHomeController
     {
         return response()->json($this->getPoints());
     }
+    public function __construct()
+    {
+        $this->middleware('api');
+    }
 
 
 }
