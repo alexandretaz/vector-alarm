@@ -235,14 +235,14 @@
         }
         @endif
         google.maps.event.addDomListener(window, 'load', initialize);
-        function check(){
+        function checkPoints(){
             window.setInterval(function(){
                 $.ajax({
                     url: '/api/V1/lastPoint/'+pointSize,
                     method:'get',
                     dataType:'json'
                 }).done(function (data) {
-                    console.dir(data);
+                    console.dir('pontos',data);
                     addMarker(data,map);
 
                 });
@@ -250,7 +250,7 @@
 
         }
         $(document).ready( function(){
-            check();
+            checkPoints();
         }
     </script>
 @endsection
