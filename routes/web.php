@@ -60,7 +60,8 @@ Route::get('/chamados/{status?}','CallInController@list')->name('call.list')->mi
 Route::get('/chamado/show/{type}/{id}','CallInController@show')->name('call.show')->middleware('auth');
 Route::get('/chamado/add', 'CallInController@search')->name('call.add')->middleware('auth');
 Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.client')->middleware('auth');
-Route::get('/device/{deviceId}/{newStatus}', 'ClientController@changeDeviceStatus')->name('device.change.status');
+Route::get('/device/{deviceId}/{newStatus}', 'ClientController@changeDeviceStatus')->name('device.change.status')->middleware('auth');
+
 
 
 
@@ -75,3 +76,4 @@ Route::post('/client/store', 'ClientController@store')->name('client.store')->mi
 Route::post('/client/car/store', 'CarController@store')->name('car.store')->middleware('auth');
 Route::post('/client/contato_autorizado/store', 'AuthContactController@store')->name('contato_autorizado.store')->middleware('auth');
 Route::post('/client/contato_prioridade/store', 'PriorityContactController@store')->name('contato_prioridade.store')->middleware('auth');
+Route::post('/configuration/save','ConfigController@update')->name('config.update')->middleware('auth');
