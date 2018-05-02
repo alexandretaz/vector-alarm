@@ -37,6 +37,7 @@
                 </div>
                 <div class="collapse navbar-collapse" >
                     <!-- Left Side Of Navbar -->
+                    @if(isset(Auth::user()->id))
                     <ul class="nav navbar-nav" id="app-navbar-collapse">
                         <li> <a href="{{route('users')}}">Usuários</a></li>
                         <li><a href="{{route('contracts')}}">Contratos</a></li>
@@ -44,6 +45,7 @@
                         <li><a href="/chamados">Chamados</a></li>
                         <li><a href="/config">Configurações</a></li>
                     </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

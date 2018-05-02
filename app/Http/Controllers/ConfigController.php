@@ -9,13 +9,21 @@ class ConfigController extends Controller
 {
 
     public function show($id=1) {
-        $configs = Configs::findOrCreate($id);
-        return view('configs.form',['configs'=>$configs]);
+        $config = Configs::find($id);
+        if($config->isEmpty()) {
+            $config = new Configs();
+            $config->save();
+        }
+        return view('configs.form',['config'=>$config]);
     }
 
     public function update(Request $request) {
         $id = $request->input('id', 1);
-        $config = Configs::findOrCreate($id);
+        $config = Configs::find($id);
+        if($config->isEmpty()) {
+            $config = new Configs();
+            $config->save();
+        }
         $config->client_id = $request->input('client_id',null);
         $config->start_panic = $request->input('start_panic',null);
         $config->start_help = $request->input('start_help',null);
