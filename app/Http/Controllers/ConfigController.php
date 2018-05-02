@@ -10,7 +10,7 @@ class ConfigController extends Controller
 
     public function show($id=1) {
         $config = Configs::find($id);
-        if($config->isEmpty()) {
+        if(empty($config)) {
             $config = new Configs();
             $config->save();
         }
@@ -20,7 +20,7 @@ class ConfigController extends Controller
     public function update(Request $request) {
         $id = $request->input('id', 1);
         $config = Configs::find($id);
-        if($config->isEmpty()) {
+        if(empty($config)) {
             $config = new Configs();
             $config->save();
         }
