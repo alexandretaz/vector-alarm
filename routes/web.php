@@ -61,6 +61,7 @@ Route::get('/chamado/show/{type}/{id}','CallInController@show')->name('call.show
 Route::get('/chamado/add', 'CallInController@search')->name('call.add')->middleware('auth');
 Route::get('/chamado/add/client/{id}','CallInController@add')->name('call.add.client')->middleware('auth');
 Route::get('/device/{deviceId}/{newStatus}', 'ClientController@changeDeviceStatus')->name('device.change.status')->middleware('auth');
+Route::post('/config','ConfigController@index')->name('config.index')->middleware('auth');
 
 
 

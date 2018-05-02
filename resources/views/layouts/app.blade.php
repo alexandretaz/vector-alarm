@@ -42,6 +42,7 @@
                         <li><a href="{{route('contracts')}}">Contratos</a></li>
                         <li><a href="{{route('home')}}">Central de Gerenciamento</a></li>
                         <li><a href="/chamados">Chamados</a></li>
+                        <li><a href="/config">Configurações</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
