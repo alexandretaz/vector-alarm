@@ -58,7 +58,7 @@
                                 <label for="updateHelp" class="col-md-4 control-label">Tempo para atualizar a posição de um alarme de ajuda</label>
 
                                 <div class="col-md-6">
-                                    <input id="starhelp" type="number" class="form-control" name="update_help" value="{{$config->start_help}}" required>
+                                    <input id="starhelp" type="number" class="form-control" name="update_help" value="{{$config->update_help}}" required>
 
 
                                     @if ($errors->has('update_help'))
