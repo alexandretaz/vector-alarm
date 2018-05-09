@@ -42,7 +42,8 @@
                         <li> <a href="{{route('users')}}">Usuários</a></li>
                         <li><a href="{{route('contracts')}}">Contratos</a></li>
                         <li><a href="{{route('home')}}">Central de Gerenciamento</a></li>
-                        <li><a href="/chamados">Chamados</a></li>
+                        <li><a href="/chamados">Chamados Ativos</a></li>
+                        <li><a href="/chamados/2">Chamados Fechados</a></li>
                         <li><a href="/config">Configurações</a></li>
                     </ul>
                     @endif
